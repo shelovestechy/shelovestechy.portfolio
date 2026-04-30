@@ -4,742 +4,1007 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Karita Jetsonen | IT Portfolio</title>
-  <meta name="description" content="Karita Jetsonen - Service Desk Specialist building toward Identity, M365 and real-world IT systems." />
+  <meta name="description" content="Karita Jetsonen - Service Desk Specialist building toward Identity, Microsoft 365 and practical IT systems." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #0f0f14;
-      --bg-soft: #14141c;
-      --surface: #181820;
-      --surface-soft: #22222c;
-      --text: #f6eef3;
-      --muted: #b8a8b2;
-      --rose: #d98ca8;
-      --rose-soft: #f4c7d7;
-      --rose-deep: #9f4f6c;
-
-      --green: #5f8f73;
-      --green-soft: #8fbfa3;
-      --green-deep: #20382c;
-
-      --gold: #d6b36a;
-      --border: rgba(244, 199, 215, 0.18);
-      --shadow: rgba(0, 0, 0, 0.35);
+      --bg: #070b09;
+      --surface: rgba(9, 18, 14, 0.78);
+      --text: #f7eee8;
+      --muted: #c9b9b0;
+      --dim: #8d7f78;
+      --rose: #e97598;
+      --rose-soft: #f5a7bd;
+      --rose-pale: #ffd1dd;
+      --green-retro: #7cffb2;
+      --gold: #c69b54;
+      --gold-border: rgba(198, 155, 84, 0.42);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
-      background:
-        radial-gradient(circle at 12% 8%, rgba(217, 140, 168, 0.16), transparent 34%),
-        radial-gradient(circle at 88% 78%, rgba(95, 143, 115, 0.22), transparent 36%),
-        radial-gradient(circle at 50% 50%, rgba(244, 199, 215, 0.04), transparent 42%),
-        var(--bg);
-      background-size: 120% 120%, 130% 130%, 140% 140%, auto;
-      animation: ambientGradient 18s ease-in-out infinite alternate;
       color: var(--text);
       font-family: "Inter", system-ui, sans-serif;
       line-height: 1.6;
+      background:
+        radial-gradient(circle at 75% 18%, rgba(233, 117, 152, 0.2), transparent 23%),
+        radial-gradient(circle at 88% 24%, rgba(124, 255, 178, 0.09), transparent 28%),
+        radial-gradient(circle at 18% 18%, rgba(198, 155, 84, 0.08), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(51, 93, 67, 0.28), transparent 38%),
+        linear-gradient(180deg, #06100b 0%, #050706 62%, #030404 100%);
+      background-size: 120% 120%, 120% 120%, 130% 130%, 140% 140%, auto;
+      animation: ambientGradient 20s ease-in-out infinite alternate;
+      overflow-x: hidden;
     }
 
     @keyframes ambientGradient {
-      0% {
-        background-position: 0% 0%, 100% 100%, 50% 50%, 0 0;
-      }
-      100% {
-        background-position: 8% 6%, 92% 88%, 55% 48%, 0 0;
-      }
+      0% { background-position: 0% 0%, 100% 0%, 0% 0%, 50% 100%, 0 0; }
+      100% { background-position: 6% 8%, 90% 12%, 10% 4%, 52% 92%, 0 0; }
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
-    .page-shell {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
+    .page-shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 
     .navbar {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(16px);
-      background: rgba(15, 15, 20, 0.72);
-      border-bottom: 1px solid var(--border);
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(3, 7, 5, 0.76);
+      border-bottom: 1px solid var(--gold-border);
     }
 
     .nav-inner {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 48px));
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 0;
+      padding: 20px 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      color: var(--rose-soft);
+      text-decoration: none;
       font-weight: 800;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
     }
 
     .brand-mark {
       width: 34px;
       height: 34px;
-      border-radius: 50%;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
-      color: white;
-      box-shadow: 0 12px 30px rgba(217, 140, 168, 0.2);
+      color: var(--rose-soft);
+      font-size: 1.35rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.94rem;
+      align-items: center;
+      gap: 30px;
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .nav-links a {
+      position: relative;
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--rose-soft);
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+      width: 0;
+      height: 2px;
+      background: var(--rose);
+      transition: width 0.2s ease;
     }
 
-    .hero {
-      min-height: 82vh;
+    .nav-links a:hover { color: var(--rose-soft); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    .hero-wrap {
+      position: relative;
+      min-height: 760px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 54px;
-      padding: 72px 0;
+      grid-template-columns: 0.06fr 0.94fr;
+      gap: 24px;
+      padding: 26px 0 34px;
     }
 
-    .eyebrow {
-      display: inline-flex;
+    .side-rail {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--rose-soft);
-      background: rgba(244, 199, 215, 0.06);
-      font-size: 0.9rem;
-      margin-bottom: 22px;
-    }
-
-    .eyebrow span {
+      padding-top: 28px;
       color: var(--gold);
     }
 
+    .rail-line {
+      width: 1px;
+      height: 270px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .rail-line::before, .rail-line::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--muted);
+      transform: translateX(-50%);
+    }
+
+    .rail-line::before { top: 60px; }
+    .rail-line::after { bottom: 80px; }
+    .rail-number { color: var(--rose-soft); font-weight: 800; margin-bottom: 86px; }
+
+    .rail-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+      gap: 28px;
+      min-height: 690px;
+      border-bottom: 1px solid rgba(198, 155, 84, 0.18);
+    }
+
+    .hero-copy { position: relative; z-index: 2; padding: 44px 0 84px; }
+
+    .eyebrow {
+      color: var(--rose-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { font-family: "Playfair Display", serif; }
+
     h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(3rem, 8vw, 6.7rem);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
+      font-size: clamp(4.4rem, 8.6vw, 8.2rem);
+      line-height: 0.84;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+      color: #f6efe8;
+      text-shadow: 0 16px 50px rgba(0, 0, 0, 0.46);
+    }
+
+    .rose-text { color: var(--rose); }
+
+    .role {
+      text-transform: uppercase;
+      letter-spacing: 0.32em;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text);
       margin-bottom: 24px;
     }
 
-    .rose-text {
+    .hero-text { max-width: 560px; color: var(--muted); font-size: 1.04rem; margin-bottom: 28px; }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: min(520px, 100%);
+      margin: 28px 0 32px;
       color: var(--rose);
     }
 
-    .hero-text {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 1.08rem;
-      margin-bottom: 32px;
+    .hero-divider::before, .hero-divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(to right, transparent, var(--rose), transparent);
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 13px 22px;
-      font-weight: 700;
+      gap: 12px;
+      min-width: 180px;
+      border-radius: 7px;
+      padding: 16px 22px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
+    .button:hover { transform: translateY(-3px); }
+
     .button-primary {
-      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
-      color: white;
-      box-shadow: 0 14px 35px rgba(217, 140, 168, 0.22);
+      color: #1b0d12;
+      background: linear-gradient(135deg, #ff78a4, #d95f85);
+      box-shadow: 0 18px 44px rgba(233, 117, 152, 0.28), 0 0 34px rgba(95, 143, 115, 0.12);
     }
 
     .button-secondary {
-      border: 1px solid var(--border);
+      border: 1px solid var(--rose);
       color: var(--rose-soft);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(7, 12, 10, 0.45);
     }
 
-    .button:hover {
-      transform: translateY(-2px) scale(1.03);
+    .button-secondary:hover { border-color: var(--rose-pale); box-shadow: 0 0 34px rgba(233, 117, 152, 0.16); }
+
+    .hero-visual {
+      position: relative;
+      min-height: 650px;
+      align-self: end;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      overflow: visible;
     }
 
-    .button-primary:hover {
-      box-shadow:
-        0 18px 46px rgba(217, 140, 168, 0.32),
-        0 0 34px rgba(95, 143, 115, 0.18);
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      width: 570px;
+      height: 570px;
+      border-radius: 50%;
+      right: 2%;
+      bottom: 34px;
+      border: 2px solid rgba(233, 117, 152, 0.42);
+      box-shadow: 0 0 80px rgba(233, 117, 152, 0.16), inset 0 0 50px rgba(95, 143, 115, 0.12);
+      z-index: 0;
     }
 
-    .button-secondary:hover {
-      border-color: rgba(244, 199, 215, 0.38);
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 20px 0 40px 0;
+      background: radial-gradient(circle at 58% 36%, rgba(233, 117, 152, 0.22), transparent 22%), radial-gradient(circle at 60% 45%, rgba(198, 155, 84, 0.12), transparent 30%), radial-gradient(circle at 68% 42%, rgba(124, 255, 178, 0.09), transparent 28%);
+      filter: blur(8px);
+      z-index: 0;
     }
 
-    .command-card {
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at top right, rgba(95, 143, 115, 0.12), transparent 46%),
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      box-shadow:
-        0 24px 70px var(--shadow),
-        0 0 44px rgba(95, 143, 115, 0.10);
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      width: min(560px, 100%);
+      max-height: 640px;
+      object-fit: contain;
+      filter: drop-shadow(0 35px 70px rgba(0, 0, 0, 0.74)) drop-shadow(0 0 34px rgba(233, 117, 152, 0.18));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .hero-image:hover {
+      transform: translateY(-4px) scale(1.015);
+      filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.78)) drop-shadow(0 0 44px rgba(233, 117, 152, 0.22)) drop-shadow(0 0 42px rgba(95, 143, 115, 0.18));
+    }
+
+    .section { padding: 30px 0 0; }
+
+    .glass-panel {
+      position: relative;
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      background: radial-gradient(circle at top left, rgba(233, 117, 152, 0.08), transparent 32%), radial-gradient(circle at bottom right, rgba(95, 143, 115, 0.16), transparent 34%), rgba(4, 12, 8, 0.72);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(14px);
+    }
+
+    .section-kicker {
+      color: var(--rose-soft);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      font-size: 0.76rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 26px;
+    }
+
+    .about-cv-grid { display: grid; grid-template-columns: 1.35fr 0.85fr; gap: 18px; margin-top: 18px; }
+    .about-card, .cv-card { padding: 34px; }
+    .about-layout { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 30px; align-items: start; }
+
+    .card-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; color: var(--rose-soft); }
+    .icon-line { font-size: 1.55rem; color: var(--rose-soft); }
+    .card-heading h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); line-height: 1; }
+    .about-card p, .cv-card p { color: var(--muted); margin-bottom: 15px; }
+
+    .skill-column { border-left: 1px solid var(--gold-border); padding-left: 32px; display: grid; gap: 16px; }
+    .skill-item { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; color: var(--muted); font-weight: 600; }
+    .skill-item span:first-child { color: var(--rose-soft); }
+
+    .cv-card { display: flex; flex-direction: column; justify-content: space-between; }
+
+    .cv-box {
+      margin-top: 22px;
+      border: 1px dashed var(--rose);
+      border-radius: 8px;
+      padding: 28px;
+      text-align: center;
+      color: var(--rose-soft);
+      background: rgba(233, 117, 152, 0.04);
+    }
+
+    .cv-disabled { margin-top: 18px; opacity: 0.68; cursor: not-allowed; }
+    .work-panel { padding: 32px; margin-top: 18px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+    .project-card {
+      position: relative;
+      min-height: 300px;
+      padding: 34px 28px;
+      border: 1px solid rgba(233, 117, 152, 0.34);
+      border-radius: 12px;
+      background: radial-gradient(circle at top left, rgba(233, 117, 152, 0.06), transparent 38%), rgba(5, 13, 9, 0.62);
+      text-align: center;
+      transform-style: preserve-3d;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
       overflow: hidden;
     }
 
-    .command-topbar {
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: radial-gradient(440px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(233, 117, 152, 0.18), rgba(124, 255, 178, 0.09) 32%, transparent 62%);
+      transition: opacity 0.18s ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover { border-color: rgba(245, 167, 189, 0.72); box-shadow: 0 22px 70px rgba(233, 117, 152, 0.18), 0 0 50px rgba(95, 143, 115, 0.18); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card > * { position: relative; z-index: 1; }
+
+    .project-icon {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 22px;
+      display: grid;
+      place-items: center;
+      color: var(--rose-soft);
+      font-size: 2rem;
+      border: 1px solid rgba(233, 117, 152, 0.42);
+      border-radius: 18px;
+      background: rgba(233, 117, 152, 0.04);
+    }
+
+    .project-card h3 { color: var(--text); font-size: 1.55rem; margin-bottom: 12px; }
+    .project-card p { color: var(--muted); margin-bottom: 24px; }
+    .card-rule { height: 1px; width: 84%; margin: 0 auto 22px; background: linear-gradient(to right, transparent, rgba(198, 155, 84, 0.5), transparent); }
+    .card-link { color: var(--rose-soft); font-size: 0.82rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; }
+
+    .terminal-section { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 18px; margin-top: 18px; }
+    .drives-card { padding: 34px; }
+    .drives-intro { color: var(--muted); margin-bottom: 16px; max-width: 62ch; }
+    .drives-card .card-heading { margin-bottom: 20px; }
+    .drives-card .card-heading h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
+
+    .command-card {
+      position: relative;
+      border: 1px solid rgba(170, 170, 170, 0.22);
+      border-radius: 2px;
+      background: repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.018), rgba(124, 255, 178, 0.018) 1px, transparent 1px, transparent 4px), linear-gradient(180deg, rgba(10, 10, 10, 0.98), rgba(5, 5, 5, 0.99));
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 28px rgba(124, 255, 178, 0.08);
+      overflow: hidden;
+    }
+
+    .command-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(245, 167, 189, 0.08), transparent);
+      transform: translateX(-100%);
+      animation: terminalShine 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes terminalShine { 0%, 70% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+    .command-topbar, .cmd-topbar, .contact-terminal-topbar {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(0,0,0,0.16);
+      justify-content: space-between;
+      padding: 7px 10px;
+      background: linear-gradient(180deg, #2e2e2e, #1f1f1f);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: "JetBrains Mono", "Consolas", monospace;
+      min-height: 34px;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--rose);
-      opacity: 0.8;
+    .cmd-title-group { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .cmd-icon { color: #dcdcdc; font-size: 0.72rem; letter-spacing: 0.02em; }
+    .cmd-title { color: #dcdcdc; font-size: 0.76rem; letter-spacing: 0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cmd-controls { display: flex; align-items: center; gap: 0; margin-left: 16px; }
+
+    .cmd-controls span, .contact-close {
+      width: 34px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: #d2d2d2;
+      font-size: 0.8rem;
+      line-height: 1;
+      user-select: none;
     }
 
-    .dot:nth-child(2) { background: var(--gold); }
-    .dot:nth-child(3) { background: var(--rose-soft); }
+    .cmd-controls span:hover { background: rgba(255, 255, 255, 0.08); }
+    .cmd-controls span:last-child:hover, .contact-close:hover { background: #c42b1c; color: white; }
 
     .terminal {
-      padding: 26px;
-      font-family: "Consolas", "Monaco", monospace;
-      color: var(--muted);
-      font-size: 0.95rem;
-      min-height: 310px;
+      position: relative;
+      z-index: 1;
+      min-height: 292px;
+      padding: 18px 20px;
+      font-family: "JetBrains Mono", "Consolas", monospace;
+      color: #d6d6d6;
+      font-size: 0.92rem;
+      line-height: 1.78;
+      letter-spacing: 0.01em;
+      background: #0c0c0c;
     }
 
-    .terminal p {
-      margin-bottom: 14px;
+    .terminal::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.024), rgba(124, 255, 178, 0.024) 1px, transparent 1px, transparent 4px);
+      pointer-events: none;
     }
 
-    .prompt {
-      color: var(--rose-soft);
-    }
-
-    .success {
-      color: var(--green-soft);
-      text-shadow: 0 0 18px rgba(95, 143, 115, 0.28);
-    }
+    .terminal p { margin-bottom: 12px; }
+    .prompt { color: var(--rose-soft); text-shadow: 0 0 14px rgba(233, 117, 152, 0.22); }
+    .success { color: var(--green-retro); text-shadow: 0 0 4px rgba(124, 255, 178, 0.6), 0 0 14px rgba(95, 143, 115, 0.35); }
 
     .typing-cursor {
       display: inline-block;
       width: 8px;
       height: 1rem;
       margin-left: 3px;
-      background: var(--rose-soft);
+      background: var(--green-retro);
+      box-shadow: 0 0 10px rgba(124, 255, 178, 0.7);
       animation: blink 0.9s infinite;
       vertical-align: middle;
     }
 
-    @keyframes blink {
-      0%, 45% { opacity: 1; }
-      46%, 100% { opacity: 0; }
-    }
+    @keyframes blink { 0%, 45% { opacity: 1; } 46%, 100% { opacity: 0; } }
 
-    .cookie-banner {
+    .boot-overlay {
       position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      width: min(680px, calc(100% - 32px));
-      display: none;
+      inset: 0;
+      z-index: 999;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.025), rgba(124, 255, 178, 0.025) 1px, transparent 1px, transparent 4px), radial-gradient(circle at center, rgba(124, 255, 178, 0.10), transparent 34%), radial-gradient(circle at bottom right, rgba(233, 117, 152, 0.08), transparent 38%), rgba(0, 3, 2, 0.90);
+      backdrop-filter: blur(4px);
+      animation: overlayExit 0.45s steps(6, end) forwards;
+      animation-delay: 5s;
+    }
+
+    .boot-window {
+      width: min(650px, 100%);
+      border: 1px solid rgba(124, 255, 178, 0.58);
+      border-radius: 3px;
+      background: repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.035), rgba(124, 255, 178, 0.035) 1px, transparent 1px, transparent 5px), radial-gradient(circle at 50% 10%, rgba(124, 255, 178, 0.09), transparent 46%), linear-gradient(180deg, rgba(1, 12, 7, 0.98), rgba(0, 4, 2, 0.99));
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.86), 0 0 34px rgba(124, 255, 178, 0.22), inset 0 0 42px rgba(124, 255, 178, 0.06);
+      overflow: hidden;
+      animation: bootFloatIn 0.28s steps(4, end) both, crtFlicker 1.7s infinite;
+    }
+
+    .boot-topbar {
+      display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(24, 24, 32, 0.94);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
-      z-index: 50;
+      gap: 7px;
+      padding: 9px 12px;
+      border-bottom: 1px solid rgba(124, 255, 178, 0.38);
+      background: rgba(0, 0, 0, 0.50);
+      font-family: "JetBrains Mono", monospace;
     }
 
-    .cookie-banner.show {
-      display: flex;
+    .boot-topbar::after {
+      content: "BOOT://KJ-PORTFOLIO";
+      margin-left: auto;
+      color: var(--green-retro);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 8px rgba(124, 255, 178, 0.55);
     }
 
-    .cookie-banner p {
-      color: var(--muted);
-      font-size: 0.92rem;
+    .boot-topbar span { width: 9px; height: 9px; border-radius: 1px; background: rgba(124, 255, 178, 0.75); box-shadow: 0 0 8px rgba(124, 255, 178, 0.45); }
+    .boot-topbar span:nth-child(2) { background: rgba(198, 155, 84, 0.8); }
+    .boot-topbar span:nth-child(3) { background: rgba(245, 167, 189, 0.8); }
+
+    .boot-content { padding: 28px 30px 30px; font-family: "JetBrains Mono", "Consolas", monospace; }
+    .boot-meta { color: rgba(124, 255, 178, 0.72); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px; }
+    .boot-static-lines { color: rgba(124, 255, 178, 0.62); font-size: 0.78rem; line-height: 1.7; margin-bottom: 18px; text-shadow: 0 0 8px rgba(124, 255, 178, 0.30); }
+    .boot-kicker { color: rgba(245, 167, 189, 0.92); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; font-weight: 800; margin-bottom: 12px; }
+    .boot-kicker::before { content: "[ OK ] "; color: var(--green-retro); text-shadow: 0 0 8px rgba(124, 255, 178, 0.45); }
+
+    .boot-content h2 {
+      font-family: "JetBrains Mono", "Consolas", monospace;
+      font-size: clamp(1.35rem, 4vw, 2.25rem);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      color: var(--green-retro);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      text-shadow: 0 0 6px rgba(124, 255, 178, 0.75), 0 0 22px rgba(124, 255, 178, 0.26);
     }
 
-    .cookie-banner strong {
-      color: var(--rose-soft);
+    .boot-line { min-height: 28px; color: var(--green-retro); text-shadow: 0 0 4px rgba(124, 255, 178, 0.72), 0 0 16px rgba(95, 143, 115, 0.42); margin-bottom: 18px; }
+    .boot-line::before { content: "> "; color: var(--rose-soft); }
+    .boot-line::after { content: "_"; margin-left: 4px; animation: blink 0.75s steps(2, end) infinite; }
+
+    .boot-progress {
+      height: 18px;
+      border: 1px solid rgba(124, 255, 178, 0.46);
+      overflow: hidden;
+      background: repeating-linear-gradient(to right, rgba(124, 255, 178, 0.08), rgba(124, 255, 178, 0.08) 8px, transparent 8px, transparent 12px), rgba(0, 0, 0, 0.40);
+      margin-bottom: 14px;
     }
 
-    .cookie-actions {
-      display: flex;
-      gap: 10px;
-      flex-shrink: 0;
+    .boot-progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, rgba(124, 255, 178, 0.95), rgba(245, 167, 189, 0.88)); box-shadow: 0 0 18px rgba(124, 255, 178, 0.58); animation: bootProgress 4.5s steps(18, end) forwards; }
+    .boot-small { color: rgba(201, 185, 176, 0.82); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    @keyframes bootFloatIn { from { opacity: 0; transform: translateY(10px) scale(0.98); filter: blur(1px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+    @keyframes crtFlicker { 0%, 100% { opacity: 1; } 92% { opacity: 0.96; } 94% { opacity: 1; } 97% { opacity: 0.98; } }
+    @keyframes overlayExit { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+    @keyframes bootProgress { to { width: 100%; } }
+
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 800;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: radial-gradient(circle at center, rgba(124, 255, 178, 0.10), transparent 34%), radial-gradient(circle at bottom right, rgba(233, 117, 152, 0.10), transparent 42%), rgba(0, 3, 2, 0.72);
+      backdrop-filter: blur(7px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 220ms ease, visibility 220ms ease;
     }
 
-    .cookie-button {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 10px 14px;
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
+    .contact-modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+
+    .contact-terminal {
+      width: min(620px, 100%);
+      border: 1px solid rgba(124, 255, 178, 0.45);
+      border-radius: 3px;
+      background: repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.026), rgba(124, 255, 178, 0.026) 1px, transparent 1px, transparent 5px), linear-gradient(180deg, rgba(8, 12, 10, 0.98), rgba(2, 5, 3, 0.99));
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.72), 0 0 42px rgba(124, 255, 178, 0.16), 0 0 34px rgba(233, 117, 152, 0.10);
+      overflow: hidden;
+      transform: translateY(12px) scale(0.98);
+      transition: transform 220ms ease;
+    }
+
+    .contact-modal.is-open .contact-terminal { transform: translateY(0) scale(1); }
+
+    .contact-close {
+      border: 0;
+      background: transparent;
       cursor: pointer;
-      font-weight: 700;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      font: inherit;
     }
 
-    .cookie-button:hover {
-      transform: translateY(-2px);
-      border-color: rgba(244, 199, 215, 0.42);
-    }
+    .contact-terminal-body { padding: 28px 30px 30px; font-family: "JetBrains Mono", "Consolas", monospace; }
+    .terminal-path { color: var(--green-retro); font-size: 0.78rem; margin-bottom: 18px; text-shadow: 0 0 8px rgba(124, 255, 178, 0.32); }
+    .contact-terminal h2 { font-family: "Playfair Display", serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 18px; color: var(--rose-soft); }
 
-    .cookie-button.accept {
-      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
-      border-color: transparent;
-    }
-
-    .section {
-      padding: 72px 0;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 28px;
-    }
-
-    h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      letter-spacing: -0.04em;
-    }
-
-    .section-note {
-      color: var(--muted);
-      max-width: 520px;
-    }
-
-    .cards-grid {
+    .contact-lines {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .project-card {
-      min-height: 260px;
-      padding: 26px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background: rgba(24, 24, 32, 0.72);
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      border-color: rgba(244, 199, 215, 0.42);
-      background:
-        radial-gradient(circle at top left, rgba(217, 140, 168, 0.13), transparent 44%),
-        radial-gradient(circle at bottom right, rgba(95, 143, 115, 0.15), transparent 42%),
-        rgba(34, 34, 44, 0.86);
-      box-shadow:
-        0 20px 60px rgba(217, 140, 168, 0.24),
-        0 0 45px rgba(95, 143, 115, 0.18);
-    }
-
-    .card-number {
-      color: var(--gold);
-      font-weight: 800;
-      margin-bottom: 22px;
-    }
-
-    .project-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 12px;
-      color: var(--rose-soft);
-    }
-
-    .project-card p {
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
-
-    .card-link {
-      color: var(--rose);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .about-panel,
-    .cv-card {
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background: rgba(24, 24, 32, 0.72);
-      padding: 34px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-    }
-
-    .about-panel {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .about-panel p,
-    .cv-card p {
-      color: var(--muted);
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(124, 255, 178, 0.18);
+      border-bottom: 1px solid rgba(124, 255, 178, 0.18);
+      margin-bottom: 18px;
     }
 
-    .pill {
-      border: 1px solid var(--border);
-      color: var(--rose-soft);
-      background: rgba(244, 199, 215, 0.05);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 0.9rem;
+    .contact-lines p { margin: 0; color: var(--text); overflow-wrap: anywhere; }
+    .contact-lines span { color: var(--green-retro); margin-right: 8px; text-shadow: 0 0 8px rgba(124, 255, 178, 0.26); }
+    .contact-lines a { color: var(--rose-soft); text-decoration: none; border-bottom: 1px solid rgba(233, 117, 152, 0.35); }
+    .contact-lines a:hover { color: var(--green-retro); border-bottom-color: rgba(124, 255, 178, 0.50); }
+    .contact-note { color: var(--muted); margin: 0; max-width: 58ch; line-height: 1.7; }
+
+    .footer { padding: 30px 0 44px; color: var(--dim); text-align: center; }
+    .footer-links { margin-top: 12px; display: flex; justify-content: center; gap: 20px; font-size: 0.9rem; }
+    .footer-links a { color: var(--rose-soft); text-decoration: none; }
+
+    @media (max-width: 980px) {
+      .hero-wrap { grid-template-columns: 1fr; }
+      .side-rail { display: none; }
+      .hero, .about-cv-grid, .about-layout, .terminal-section { grid-template-columns: 1fr; }
+      .hero-visual { min-height: auto; }
+      .hero-visual::before { width: 360px; height: 360px; right: 50%; transform: translateX(50%); }
+      .hero-image { max-height: 480px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .skill-column { border-left: 0; padding-left: 0; border-top: 1px solid var(--gold-border); padding-top: 22px; }
+      .nav-links { display: none; }
     }
 
-    .cv-card {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 28px;
-      align-items: center;
-      background:
-        linear-gradient(135deg, rgba(217, 140, 168, 0.16), transparent 58%),
-        rgba(24, 24, 32, 0.82);
-    }
-
-    .cv-card h2 {
-      margin-bottom: 10px;
-    }
-
-    .footer {
-      padding: 36px 0 52px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-    }
-
-    .footer-links a {
-      color: var(--rose-soft);
-      text-decoration: none;
-    }
-
-    .hero-profile img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--border);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.45);
-    }
-
-    .hero-profile img:hover {
-      transform: scale(1.05);
-      box-shadow:
-        0 20px 60px rgba(217, 140, 168, 0.35),
-        0 0 50px rgba(95, 143, 115, 0.24);
-    }
-
-    @media (max-width: 880px) {
-      .hero,
-      .about-panel,
-      .cv-card {
-        grid-template-columns: 1fr;
-      }
-
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-heading,
-      .footer-inner {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        display: none;
-      }
+    @media (max-width: 560px) {
+      .page-shell, .nav-inner { width: min(100% - 28px, 1180px); }
+      h1 { font-size: clamp(3.6rem, 17vw, 5rem); }
+      .hero-copy { padding-top: 30px; }
+      .about-card, .cv-card, .work-panel, .drives-card { padding: 24px; }
     }
   </style>
 </head>
 
 <body>
+  <div class="boot-overlay" id="bootOverlay" aria-live="polite">
+    <div class="boot-window">
+      <div class="boot-topbar"><span></span><span></span><span></span></div>
+      <div class="boot-content">
+        <div class="boot-meta">KJ-PORTFOLIO / IDENTITY SYSTEM / v1.0</div>
+        <div class="boot-static-lines" aria-hidden="true">
+          <p>&gt; system wake</p>
+          <p>&gt; identity module online</p>
+          <p>&gt; loading profile...</p>
+        </div>
+        <p class="boot-kicker">Portfolio boot sequence</p>
+        <h2>Loading Karita Jetsonen</h2>
+        <p class="boot-line" id="bootLine">Initializing portfolio system...</p>
+        <div class="boot-progress" aria-label="Loading progress"><div class="boot-progress-fill"></div></div>
+        <p class="boot-small">Identity-focused IT · M365 · PowerShell · Support Thinking</p>
+      </div>
+    </div>
+  </div>
+
   <header class="navbar">
     <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Go to homepage">
-        <span class="brand-mark">K</span>
-        <span>Karita Jetsonen</span>
-      </a>
-
+      <a class="brand" href="#top" aria-label="Go to homepage"><span class="brand-mark">♕</span><span>KJ</span></a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
+        <a href="#top" class="active">Home</a>
+        <a href="#about">About me</a>
+        <a href="#work">Identity Lab</a>
+        <a href="#work">PowerShell</a>
         <a href="#cv">CV</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact" data-contact-open>Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="top" class="page-shell">
-    <section class="hero">
-      <div>
-        <div class="eyebrow"><span>✦</span> Service Desk Specialist · Identity-minded IT</div>
-        <h1>Soft rose.<br><span class="rose-text">Sharp systems.</span></h1>
-        <p class="hero-text">
-          I work in IT support and build my skills toward Identity, Microsoft 365 and practical automation.
-          My portfolio is not just a list of projects — it is a place where I show how I think, troubleshoot and improve systems.
-        </p>
-
-        <div style="display:flex; gap:30px; align-items:center; flex-wrap:wrap;">
-        <div class="hero-profile">
-          <img src="assets/profile.png" alt="Karita Jetsonen">
-        </div>
-
-        <div class="hero-actions">
-          <a href="#work" class="button button-primary">View my work</a>
-          <a href="#cv" class="button button-secondary">CV coming soon</a>
-        </div>
-      </div>
-
-      <aside class="command-card" aria-label="Portfolio terminal preview">
-        <div class="command-topbar">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-        <div class="terminal" id="terminal" aria-live="polite"></div>
+    <section class="hero-wrap">
+      <aside class="side-rail" aria-hidden="true">
+        <div class="rail-line"></div>
+        <div class="rail-number">01</div>
+        <div class="rail-text">Let’s build better systems</div>
       </aside>
-    </section>
 
-    <section id="work" class="section">
-      <div class="section-heading">
-        <h2>Selected work</h2>
-        <p class="section-note">
-          A focused collection of projects and notes around identity, Microsoft 365, support quality and automation.
-        </p>
-      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Welcome to my portfolio</div>
+          <h1>Karita<br><span class="rose-text">Jetsonen</span></h1>
+          <div class="role">Service Desk Specialist</div>
+          <p class="hero-text">Building toward Identity & Access Management and Microsoft 365 expertise through real-world problem solving.</p>
+          <div class="hero-divider">✦</div>
+          <div class="hero-actions">
+            <a href="#about" class="button button-primary">About me →</a>
+            <a href="#work" class="button button-secondary">Explore my work</a>
+          </div>
+        </div>
 
-      <div class="cards-grid">
-        <article class="project-card">
-          <div class="card-number">01</div>
-          <h3>Identity Lab</h3>
-          <p>
-            Notes and case-style thinking about IAM fundamentals, joiner-mover-leaver lifecycle, access models and security assumptions.
-          </p>
-          <a class="card-link" href="https://github.com/SheLovesTechy" target="_blank" rel="noreferrer">Open GitHub →</a>
-        </article>
-
-        <article class="project-card">
-          <div class="card-number">02</div>
-          <h3>PowerShell Playground</h3>
-          <p>
-            A learning space for PowerShell fundamentals, safe scripting habits, reusable automation patterns and M365 direction.
-          </p>
-          <a class="card-link" href="https://github.com/SheLovesTechy" target="_blank" rel="noreferrer">Open GitHub →</a>
-        </article>
-
-        <article class="project-card">
-          <div class="card-number">03</div>
-          <h3>Support Thinking</h3>
-          <p>
-            Practical reflections on troubleshooting, ticket quality, user communication and how small process gaps become bigger IT problems.
-          </p>
-          <a class="card-link" href="#contact">Ask me more →</a>
-        </article>
+        <div class="hero-visual" aria-label="Portfolio profile image">
+          <img class="hero-image" src="assets/profile.png" alt="Karita Jetsonen illustrated profile image" />
+        </div>
       </div>
     </section>
 
     <section id="about" class="section">
-      <div class="about-panel">
-        <div>
-          <h2>About me</h2>
-          <p>
-            I am a Service Desk Specialist with a growing focus on Identity, Microsoft 365 and automation. I enjoy solving practical problems,
-            explaining technical things clearly and building better habits around access, documentation and support work.
-          </p>
-        </div>
+      <div class="about-cv-grid">
+        <article class="glass-panel about-card">
+          <div class="about-layout">
+            <div>
+              <div class="card-heading"><span class="icon-line">♙</span><h2>About Me</h2></div>
+              <p>I’m Karita, a Service Desk Specialist with a growing focus on identity, Microsoft 365 and practical automation. I like understanding what happens under the hood, not just clicking through instructions and hoping for the best.</p>
+              <p>My strength is combining user support with systems thinking: spotting patterns, documenting clearly and turning messy everyday issues into something easier to understand and improve.</p>
+              <p>Right now I’m building deeper skills in Identity & Access Management, Entra ID, Microsoft 365 and PowerShell.</p>
+            </div>
 
-        <div>
-          <h2>Focus areas</h2>
-          <p>
-            My goal is to move from reactive support toward deeper system understanding: why access breaks, how processes drift and how tooling can support better decisions.
-          </p>
-          <div class="skill-list" aria-label="Skill list">
-            <span class="pill">Identity & Access</span>
-            <span class="pill">Microsoft 365</span>
-            <span class="pill">Entra ID</span>
-            <span class="pill">PowerShell</span>
-            <span class="pill">Documentation</span>
-            <span class="pill">Troubleshooting</span>
+            <div class="skill-column" aria-label="Focus areas">
+              <div class="skill-item"><span>◇</span><span>Identity & Access Management</span></div>
+              <div class="skill-item"><span>▦</span><span>Microsoft 365</span></div>
+              <div class="skill-item"><span>▣</span><span>Entra ID</span></div>
+              <div class="skill-item"><span>▸</span><span>PowerShell</span></div>
+              <div class="skill-item"><span>✧</span><span>Problem Solving</span></div>
+              <div class="skill-item"><span>☷</span><span>Documentation</span></div>
+            </div>
           </div>
+        </article>
+
+        <article id="cv" class="glass-panel cv-card">
+          <div>
+            <div class="card-heading"><span class="icon-line">▤</span><h2>Curriculum Vitae</h2></div>
+            <p>My full CV will include detailed experience, skills, education and current career direction.</p>
+          </div>
+
+          <div class="cv-box">
+            <div style="font-size: 2rem; margin-bottom: 10px;">☁</div>
+            <strong>CV coming soon</strong>
+            <p style="margin: 8px 0 0;">Available for download once the final version is ready.</p>
+          </div>
+
+          <a href="#" class="button button-secondary cv-disabled" aria-disabled="true">CV coming soon</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="work" class="section">
+      <div class="glass-panel work-panel">
+        <div class="section-kicker">What I focus on</div>
+        <h2 class="section-title">My Work & Interests</h2>
+        <div class="hero-divider" style="margin-left:auto; margin-right:auto; max-width:520px;">✦</div>
+
+        <div class="cards-grid">
+          <article class="project-card">
+            <div class="project-icon">♢</div>
+            <h3>Identity Lab</h3>
+            <p>Exploring IAM fundamentals, access models, joiner-mover-leaver thinking, security assumptions and real access risks.</p>
+            <div class="card-rule"></div>
+            <a class="card-link" href="https://github.com/SheLovesTechy" target="_blank" rel="noreferrer">View lab →</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon">⌁</div>
+            <h3>PowerShell Playground</h3>
+            <p>Learning safe scripting habits, reusable automation patterns and practical admin workflows for everyday IT.</p>
+            <div class="card-rule"></div>
+            <a class="card-link" href="https://github.com/SheLovesTechy" target="_blank" rel="noreferrer">Open playground →</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon">☏</div>
+            <h3>Support Thinking</h3>
+            <p>Tracking patterns, solving issues clearly and turning support chaos into useful documentation and better process thinking.</p>
+            <div class="card-rule"></div>
+            <a class="card-link" href="#contact" data-contact-open>Explore →</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="cv" class="section">
-      <div class="cv-card">
-        <div>
-          <h2>Curriculum Vitae</h2>
-          <p>
-            Want the full picture? Download my CV to see my experience, technical skills and current growth direction in IT.
-          </p>
+    <section class="terminal-section">
+      <article class="glass-panel drives-card">
+        <div class="card-heading"><span class="icon-line">✦</span><h2>What drives me</h2></div>
+        <p class="drives-intro">I have loved computers since I was a kid. At six years old, I was already making my parents proud by freezing Windows 98 and saving my very valuable Paint masterpieces on floppy disks.</p>
+        <p class="drives-intro">Outside work, I enjoy being in nature, fishing, reading books, listening to music, gaming and spending time around dogs. I like things that keep me curious, grounded and a little bit stubborn in the best way.</p>
+        <p class="drives-intro">My goal is to build a career that challenges me, teaches me continuously and lets me help other people through better systems, clearer support and practical problem solving.</p>
+      </article>
+
+      <aside class="command-card" aria-label="Portfolio terminal preview">
+        <div class="command-topbar cmd-topbar">
+          <div class="cmd-title-group"><span class="cmd-icon">C:\&gt;</span><span class="cmd-title">Command Prompt</span></div>
+          <div class="cmd-controls" aria-hidden="true"><span>─</span><span>□</span><span>✕</span></div>
         </div>
-        <a href="#" class="button button-primary" style="opacity:0.6; cursor:not-allowed;">CV coming soon</a>
-      </div>
+        <div class="terminal" id="terminal" aria-live="polite"></div>
+      </aside>
     </section>
   </main>
 
   <footer id="contact" class="footer">
-    <div class="page-shell footer-inner">
-      <p>© <span id="year"></span> Karita Jetsonen. Built with HTML, CSS and stubborn queen energy.</p>
-      <div class="footer-links">
-        <a href="https://github.com/SheLovesTechy" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://shelovestechy.blogspot.com/" target="_blank" rel="noreferrer">Blog</a>
-        <a href="mailto:karita.jetsonen@outlook.com">Email</a>
-      </div>
+    <p>© <span id="year"></span> Karita Jetsonen. Built with HTML, CSS and stubborn queen energy. ♥</p>
+    <div class="footer-links">
+      <a href="mailto:karita.jetsonen@outlook.com">Email</a>
+      <a href="https://github.com/SheLovesTechy" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://shelovestechy.blogspot.com/" target="_blank" rel="noreferrer">Blog</a>
     </div>
   </footer>
 
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie notice">
-    <p>
-      <strong>Cookie note:</strong> This portfolio only uses local storage to remember this choice. No tracking, no creepy nonsense.
-    </p>
-    <div class="cookie-actions">
-      <button class="cookie-button" id="rejectCookies" type="button">No thanks</button>
-      <button class="cookie-button accept" id="acceptCookies" type="button">Accept</button>
+  <div class="contact-modal" id="contactModal" aria-hidden="true">
+    <div class="contact-terminal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+      <div class="contact-terminal-topbar">
+        <div class="cmd-title-group"><span class="cmd-icon">C:\&gt;</span><span class="cmd-title">contact_port.exe</span></div>
+        <button class="contact-close" id="contactClose" type="button" aria-label="Close contact window">✕</button>
+      </div>
+
+      <div class="contact-terminal-body">
+        <p class="terminal-path">C:\Users\Karita&gt; open contact_port</p>
+        <h2 id="contactModalTitle">Contact Port</h2>
+
+        <div class="contact-lines">
+          <p><span>Name:</span> Karita Jetsonen</p>
+          <p><span>Location:</span> Finland / remotely</p>
+          <p><span>Email:</span> <a href="mailto:karita.jetsonen@outlook.com">karita.jetsonen@outlook.com</a></p>
+          <p><span>LinkedIn:</span> <a href="https://linkedin.com/in/karitajetsonen" target="_blank" rel="noopener noreferrer">linkedin.com/in/karitajetsonen</a></p>
+        </div>
+
+        <p class="contact-note">Please feel free to contact me about business, collaboration or partnership ideas — especially around IT, identity, Microsoft 365, support thinking or practical technology projects.</p>
+      </div>
     </div>
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", () => {
+      const requiredElements = [
+        "year",
+        "bootOverlay",
+        "bootLine",
+        "terminal",
+        "contactModal",
+        "contactClose"
+      ];
 
-    const terminal = document.getElementById("terminal");
-    const terminalLines = [
-      { text: "karita@portfolio ~ % open identity-lab", className: "prompt" },
-      { text: "Access granted: IAM fundamentals, access models, lifecycle thinking.", className: "success" },
-      { text: "karita@portfolio ~ % run support-mindset", className: "prompt" },
-      { text: "Result: calm troubleshooting, clear documentation, user-first communication.", className: "success" },
-      { text: "karita@portfolio ~ % start powershell-playground", className: "prompt" },
-      { text: "Building safe scripts, reusable patterns and better admin habits.", className: "success" }
-    ];
+      requiredElements.forEach((id) => {
+        console.assert(document.getElementById(id), `Missing required element: #${id}`);
+      });
 
-    let lineIndex = 0;
-    let charIndex = 0;
-    let currentParagraph = null;
+      const year = document.getElementById("year");
+      if (year) year.textContent = new Date().getFullYear();
 
-    function typeTerminal() {
-      if (lineIndex >= terminalLines.length) {
-        const cursor = document.createElement("span");
-        cursor.className = "typing-cursor";
-        terminal.appendChild(cursor);
-        return;
+      const contactModal = document.getElementById("contactModal");
+      const contactClose = document.getElementById("contactClose");
+      const contactTriggers = document.querySelectorAll('a[href="#contact"], a[href="#contacts"], [data-contact-open]');
+
+      function openContactModal(event) {
+        if (event) event.preventDefault();
+        if (!contactModal || !contactClose) return;
+        contactModal.classList.add("is-open");
+        contactModal.setAttribute("aria-hidden", "false");
+        contactClose.focus();
       }
 
-      if (!currentParagraph) {
-        currentParagraph = document.createElement("p");
-        currentParagraph.className = terminalLines[lineIndex].className;
-        terminal.appendChild(currentParagraph);
+      function closeContactModal() {
+        if (!contactModal) return;
+        contactModal.classList.remove("is-open");
+        contactModal.setAttribute("aria-hidden", "true");
       }
 
-      const currentLine = terminalLines[lineIndex].text;
-      currentParagraph.textContent += currentLine.charAt(charIndex);
-      charIndex++;
-
-      if (charIndex < currentLine.length) {
-        setTimeout(typeTerminal, 28);
-      } else {
-        lineIndex++;
-        charIndex = 0;
-        currentParagraph = null;
-        setTimeout(typeTerminal, 360);
+      contactTriggers.forEach((trigger) => trigger.addEventListener("click", openContactModal));
+      if (contactClose) contactClose.addEventListener("click", closeContactModal);
+      if (contactModal) {
+        contactModal.addEventListener("click", (event) => {
+          if (event.target === contactModal) closeContactModal();
+        });
       }
-    }
 
-    typeTerminal();
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && contactModal && contactModal.classList.contains("is-open")) {
+          closeContactModal();
+        }
+      });
 
-    const cookieBanner = document.getElementById("cookieBanner");
-    const acceptCookies = document.getElementById("acceptCookies");
-    const rejectCookies = document.getElementById("rejectCookies");
+      console.assert(contactTriggers.length > 0, "Expected at least one contact trigger link/button.");
 
-    if (!localStorage.getItem("cookieChoice")) {
-      setTimeout(() => cookieBanner.classList.add("show"), 800);
-    }
+      const bootOverlay = document.getElementById("bootOverlay");
+      const bootLine = document.getElementById("bootLine");
+      const bootMessages = [
+        "Initializing portfolio system...",
+        "Scanning user profile...",
+        "User found: Karita Jetsonen",
+        "Loading future path: IAM Analyst...",
+        "Preparing identity-focused interface...",
+        "System ready. Welcome."
+      ];
 
-    acceptCookies.addEventListener("click", () => {
-      localStorage.setItem("cookieChoice", "accepted");
-      cookieBanner.classList.remove("show");
-    });
+      if (bootLine) {
+        bootMessages.forEach((message, index) => {
+          setTimeout(() => { bootLine.textContent = message; }, index * 780);
+        });
+      }
 
-    rejectCookies.addEventListener("click", () => {
-      localStorage.setItem("cookieChoice", "rejected");
-      cookieBanner.classList.remove("show");
+      if (bootOverlay) {
+        setTimeout(() => { bootOverlay.remove(); }, 5800);
+      }
+
+      const terminal = document.getElementById("terminal");
+      const terminalLines = [
+        { text: "Microsoft Windows [Version 10.0.22631]", className: "prompt" },
+        { text: "(c) Karita Jetsonen. All rights reserved.", className: "prompt" },
+        { text: "C:\\Users\\Karita> boot portfolio.exe", className: "prompt" },
+        { text: "[OK] Portfolio system initialized", className: "success" },
+        { text: "C:\\Users\\Karita> load profile --user karita_jetsonen", className: "prompt" },
+        { text: "[OK] User found: Karita Jetsonen", className: "success" },
+        { text: "C:\\Users\\Karita> show focus", className: "prompt" },
+        { text: "Identity | Microsoft 365 | PowerShell | Support Thinking", className: "success" },
+        { text: "C:\\Users\\Karita> status", className: "prompt" },
+        { text: "Ready to level up.", className: "success" }
+      ];
+
+      console.assert(terminalLines.every((line) => typeof line.text === "string" && line.text.length > 0), "All terminal lines must contain text.");
+      console.assert(terminalLines.some((line) => line.text.includes("C:\\Users\\Karita")), "Terminal should include a Windows-style path.");
+
+      let lineIndex = 0;
+      let charIndex = 0;
+      let currentParagraph = null;
+
+      function typeTerminal() {
+        if (!terminal) return;
+
+        if (lineIndex >= terminalLines.length) {
+          const cursor = document.createElement("span");
+          cursor.className = "typing-cursor";
+          terminal.appendChild(cursor);
+          return;
+        }
+
+        if (!currentParagraph) {
+          currentParagraph = document.createElement("p");
+          currentParagraph.className = terminalLines[lineIndex].className;
+          terminal.appendChild(currentParagraph);
+        }
+
+        const currentLine = terminalLines[lineIndex].text;
+        currentParagraph.textContent += currentLine.charAt(charIndex);
+        charIndex += 1;
+
+        if (charIndex < currentLine.length) {
+          setTimeout(typeTerminal, 26);
+        } else {
+          lineIndex += 1;
+          charIndex = 0;
+          currentParagraph = null;
+          setTimeout(typeTerminal, 320);
+        }
+      }
+
+      typeTerminal();
+
+      const cards = document.querySelectorAll(".project-card");
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+          const rotateX = ((y / rect.height) - 0.5) * -7;
+          const rotateY = ((x / rect.width) - 0.5) * 7;
+
+          card.style.setProperty("--mouse-x", `${x}px`);
+          card.style.setProperty("--mouse-y", `${y}px`);
+          card.style.transform = `translateY(-6px) scale(1.018) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(0) scale(1) rotateX(0deg) rotateY(0deg)";
+        });
+      });
     });
   </script>
 </body>
