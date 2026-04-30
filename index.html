@@ -1277,6 +1277,237 @@
     height: 380px !important;
   }
 }
+
+/* MOBILE POLISH — makes the portfolio feel designed for phone, not just squeezed smaller */
+@media (max-width: 760px) {
+  .navbar {
+    position: sticky;
+  }
+
+  .nav-inner {
+    padding: 14px 0;
+  }
+
+  .brand {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+  }
+
+  .nav-links {
+    gap: 10px;
+    font-size: 0.68rem;
+  }
+
+  .hero-wrap {
+    min-height: auto;
+    padding: 18px 0 14px;
+  }
+
+  .hero {
+    min-height: auto;
+    gap: 10px;
+    text-align: center;
+    border-bottom: 0;
+  }
+
+  .hero-copy {
+    padding: 28px 0 18px;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: clamp(3.25rem, 18vw, 4.8rem);
+    line-height: 0.88;
+    margin-bottom: 18px;
+  }
+
+  .role {
+    font-size: 0.76rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 18px;
+  }
+
+  .hero-text {
+    max-width: 33ch;
+    margin: 0 auto 20px;
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .hero-divider {
+    margin: 20px auto 22px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 310px;
+    min-width: unset;
+    padding: 14px 18px;
+    font-size: 0.74rem;
+  }
+
+  .hero-visual {
+    min-height: 330px !important;
+    margin-top: 4px;
+  }
+
+  .hero-image-circle {
+    width: 285px !important;
+    height: 285px !important;
+  }
+
+  .hero-visual::before {
+    width: 320px !important;
+    height: 320px !important;
+  }
+
+  .hero-visual::after {
+    width: 350px !important;
+    height: 350px !important;
+  }
+
+  .section {
+    padding-top: 18px;
+  }
+
+  .about-cv-grid {
+    gap: 14px;
+  }
+
+  .about-card,
+  .cv-card,
+  .work-panel,
+  .drives-card {
+    padding: 22px;
+  }
+
+  .card-heading {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .card-heading h2 {
+    font-size: 2rem;
+  }
+
+  .about-card p,
+  .cv-card p,
+  .drives-intro {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .skill-column {
+    gap: 12px;
+  }
+
+  .skill-item {
+    grid-template-columns: 22px 1fr;
+    font-size: 0.92rem;
+  }
+
+  .section-title {
+    font-size: 2.3rem;
+    text-align: center;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cards-grid {
+    gap: 14px;
+  }
+
+  .project-card {
+    min-height: auto;
+    padding: 26px 22px;
+  }
+
+  .project-icon {
+    width: 62px;
+    height: 62px;
+    font-size: 1.55rem;
+    margin-bottom: 16px;
+  }
+
+  .project-card h3 {
+    font-size: 1.35rem;
+  }
+
+  .terminal-section {
+    gap: 14px;
+  }
+
+  .terminal {
+    min-height: 250px;
+    padding: 14px;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    overflow-x: auto;
+  }
+
+  .cmd-title {
+    max-width: 190px;
+  }
+
+  .boot-content {
+    padding: 22px;
+  }
+
+  .boot-window {
+    width: min(94vw, 650px);
+  }
+
+  .boot-static-lines {
+    display: none;
+  }
+
+  .boot-content h2 {
+    font-size: 1.35rem;
+  }
+
+  .boot-line {
+    font-size: 0.78rem;
+  }
+
+  .contact-terminal {
+    width: min(94vw, 620px);
+  }
+
+  .contact-terminal-body {
+    padding: 22px;
+  }
+
+  .contact-terminal h2 {
+    font-size: 1.3rem;
+  }
+
+  .contact-lines {
+    font-size: 0.84rem;
+  }
+
+  .footer {
+    padding: 24px 18px 38px;
+    font-size: 0.82rem;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}
 </style>
 </head>
 
@@ -1420,7 +1651,7 @@
       <article class="glass-panel drives-card">
         <div class="card-heading"><span class="icon-line">✦</span><h2>What drives me</h2></div>
         <p class="drives-intro">I have loved computers since I was a kid. At six years old, I was already making my parents proud by freezing Windows 98 and saving my very valuable Paint masterpieces on floppy disks.</p>
-        <p class="drives-intro">Outside work, I enjoy being in nature, fishing, reading books, listening to music, gaming and spending time with family. I like things that keep me curious, grounded and a little bit stubborn in the best way.</p>
+        <p class="drives-intro">Outside work, I enjoy being in nature, fishing, reading books, listening to music, gaming and spending time around dogs. I like things that keep me curious, grounded and a little bit stubborn in the best way.</p>
         <p class="drives-intro">My goal is to build a career that challenges me, teaches me continuously and lets me help other people through better systems, clearer support and practical problem solving.</p>
       </article>
 
@@ -1539,14 +1770,16 @@
         bootMessages.forEach((message, index) => {
           setTimeout(() => {
             bootLine.textContent = message;
-          }, index * 780);
+          }, index * (isMobile ? 420 : 780));
         });
       }
 
       if (bootOverlay) {
-        setTimeout(() => {
-          bootOverlay.remove();
-        }, 5800);
+        const isMobile = window.matchMedia("(max-width: 760px)").matches;
+
+      setTimeout(() => {
+        bootOverlay.remove();
+      }, isMobile ? 3200 : 5800);
       }
 
       const terminalLines = [
