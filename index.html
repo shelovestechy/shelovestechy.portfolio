@@ -1890,8 +1890,43 @@
   </script>
 
 <script>
-  /* FINAL GLOW-ONLY FIX — keeps the old terminal behavior and removes card movement */
+  /* FINAL TERMINAL + GLOW FIX — terminal works, cards do not move */
   document.addEventListener("DOMContentLoaded", () => {
+    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+
+    /* Restore CMD-style terminal typing */
+    const terminal = document.querySelector(".terminal");
+
+    if (terminal && !terminal.dataset.typed) {
+      terminal.dataset.typed = "true";
+
+      const terminalLines = [
+        { text: "C:\Users\Karita> whoami", className: "muted" },
+        { text: "karita.jetsonen", className: "success" },
+        { text: "C:\Users\Karita> current-role", className: "muted" },
+        { text: "Service Desk Specialist", className: "" },
+        { text: "C:\Users\Karita> career-path", className: "muted" },
+        { text: "IAM Analyst / Identity & Security", className: "success" },
+        { text: "C:\Users\Karita> focus", className: "muted" },
+        { text: "Identity & Access Management | Security | Microsoft 365 | Entra ID | PowerShell", className: "" },
+        { text: "C:\Users\Karita> status", className: "muted" },
+        { text: "learning, building and improving", className: "rose" },
+        { text: "C:\Users\Karita> _", className: "success cursor-line" }
+      ];
+
+      terminal.innerHTML = "";
+
+      terminalLines.forEach((line, index) => {
+        setTimeout(() => {
+          const row = document.createElement("div");
+          row.className = `terminal-line ${line.className || ""}`;
+          row.textContent = line.text;
+          terminal.appendChild(row);
+        }, index * (isMobile ? 260 : 430));
+      });
+    }
+
+    /* Glow-only cards: no tilt, no movement */
     const glowCards = document.querySelectorAll(".skill-item, .project-card, .work-panel, .cv-card, .drives-card, .about-card");
 
     glowCards.forEach((card) => {
