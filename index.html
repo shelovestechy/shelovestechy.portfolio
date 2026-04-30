@@ -1508,6 +1508,39 @@
     flex-wrap: wrap;
   }
 }
+
+/* FINAL GLOW-ONLY CARD FIX — no tilt, no movement, only light follows the cursor */
+.skill-item,
+.project-card,
+.work-panel,
+.cv-card,
+.drives-card,
+.about-card {
+  transform: none !important;
+}
+
+.skill-item:hover,
+.project-card:hover,
+.work-panel:hover,
+.cv-card:hover,
+.drives-card:hover,
+.about-card:hover {
+  transform: none !important;
+}
+
+.skill-item::before,
+.project-card::before,
+.work-panel::before,
+.cv-card::before,
+.drives-card::before,
+.about-card::before {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(233, 117, 152, 0.18),
+    rgba(95, 143, 115, 0.10) 28%,
+    transparent 56%
+  ) !important;
+}
 </style>
 </head>
 
@@ -1857,60 +1890,25 @@
   </script>
 
 <script>
-  /* FINAL INTERACTION FIX — safe fallback if earlier scripts stop working */
+  /* FINAL GLOW-ONLY FIX — keeps the old terminal behavior and removes card movement */
   document.addEventListener("DOMContentLoaded", () => {
-    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+    const glowCards = document.querySelectorAll(".skill-item, .project-card, .work-panel, .cv-card, .drives-card, .about-card");
 
-    /* Terminal typing animation */
-    const terminal = document.querySelector(".terminal");
-
-    if (terminal) {
-      const lines = [
-        { text: "> initializing portfolio system...", className: "muted" },
-        { text: "> user: Karita Jetsonen", className: "success" },
-        { text: "> role: Service Desk Specialist", className: "" },
-        { text: "> path: IAM Analyst / Identity & Security", className: "success" },
-        { text: "> focus: identity, access, security, Microsoft 365, PowerShell", className: "" },
-        { text: "> status: learning, building, improving", className: "rose" },
-        { text: "> system ready_", className: "success cursor-line" }
-      ];
-
-      terminal.innerHTML = "";
-
-      lines.forEach((line, index) => {
-        setTimeout(() => {
-          const row = document.createElement("div");
-          row.className = `terminal-line ${line.className || ""}`;
-          row.textContent = line.text;
-          terminal.appendChild(row);
-        }, index * (isMobile ? 320 : 520));
-      });
-    }
-
-    /* Mouse-reactive cards for What I focus on / project cards */
-    const reactiveCards = document.querySelectorAll(".skill-item, .project-card, .work-panel, .cv-card, .drives-card");
-
-    reactiveCards.forEach((card) => {
+    glowCards.forEach((card) => {
       card.addEventListener("mousemove", (event) => {
-        if (isMobile) return;
-
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -4;
-        const rotateY = ((x - centerX) / centerX) * 4;
-
         card.style.setProperty("--mouse-x", `${x}px`);
         card.style.setProperty("--mouse-y", `${y}px`);
-        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        card.style.transform = "none";
       });
 
       card.addEventListener("mouseleave", () => {
-        card.style.transform = "";
+        card.style.removeProperty("--mouse-x");
+        card.style.removeProperty("--mouse-y");
+        card.style.transform = "none";
       });
     });
   });
