@@ -635,7 +635,25 @@
 
     .contact-terminal-body { padding: 28px 30px 30px; font-family: "JetBrains Mono", "Consolas", monospace; }
     .terminal-path { color: var(--green-retro); font-size: 0.78rem; margin-bottom: 18px; text-shadow: 0 0 8px rgba(124, 255, 178, 0.32); }
-    .contact-terminal h2 { font-family: "Playfair Display", serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 18px; color: var(--rose-soft); }
+    .contact-terminal h2 {
+      font-family: "JetBrains Mono", "Consolas", monospace;
+      font-size: clamp(1.45rem, 3vw, 2.05rem);
+      margin-bottom: 18px;
+      color: var(--green-retro);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      text-shadow: 0 0 8px rgba(124, 255, 178, 0.42);
+    }
+
+    .contact-terminal h2::before {
+      content: "[ ";
+      color: var(--rose-soft);
+    }
+
+    .contact-terminal h2::after {
+      content: " ]";
+      color: var(--rose-soft);
+    }
 
     .contact-lines {
       display: grid;
@@ -856,7 +874,7 @@
           <p><span>LinkedIn:</span> <a href="https://linkedin.com/in/karitajetsonen" target="_blank" rel="noopener noreferrer">linkedin.com/in/karitajetsonen</a></p>
         </div>
 
-        <p class="contact-note">Please feel free to contact me about business, collaboration or partnership ideas — especially around IT, identity, Microsoft 365, support thinking or practical technology projects.</p>
+        <p class="contact-note">I’m open to hearing from recruiters, hiring managers and potential collaborators about relevant opportunities, projects or partnership ideas.</p>
       </div>
     </div>
   </div>
