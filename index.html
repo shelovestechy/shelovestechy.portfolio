@@ -1595,6 +1595,150 @@
 .about-card:hover::before {
   opacity: 1;
 }
+
+/* # Tästä alkaa lopullinen old school CMD / retro terminal -korjaus
+   Tämä tekee terminaalista vähemmän smoothin ja enemmän musta-vihreän,
+   vanhan komentorivin näköisen. */
+.command-card {
+  border: 1px solid rgba(124, 255, 178, 0.42) !important;
+  border-radius: 2px !important;
+  background: #050705 !important;
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.70),
+    0 0 24px rgba(124, 255, 178, 0.10),
+    inset 0 0 28px rgba(124, 255, 178, 0.035) !important;
+}
+
+.command-card::before {
+  display: none !important;
+}
+
+.command-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(124, 255, 178, 0.045),
+      rgba(124, 255, 178, 0.045) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.45;
+  mix-blend-mode: screen;
+}
+
+.command-topbar,
+.cmd-topbar {
+  min-height: 30px !important;
+  padding: 5px 8px !important;
+  background: linear-gradient(180deg, #161916, #090b09) !important;
+  border-bottom: 1px solid rgba(124, 255, 178, 0.28) !important;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.85) !important;
+}
+
+.cmd-icon,
+.cmd-title {
+  color: rgba(124, 255, 178, 0.86) !important;
+  font-family: "JetBrains Mono", "Consolas", monospace !important;
+  text-shadow: 0 0 8px rgba(124, 255, 178, 0.35) !important;
+}
+
+.cmd-title {
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  font-size: 0.68rem !important;
+}
+
+.cmd-controls span {
+  color: rgba(124, 255, 178, 0.72) !important;
+  height: 20px !important;
+  font-size: 0.72rem !important;
+}
+
+.cmd-controls span:hover {
+  background: rgba(124, 255, 178, 0.10) !important;
+}
+
+.cmd-controls span:last-child:hover {
+  background: rgba(196, 43, 28, 0.88) !important;
+  color: white !important;
+}
+
+.terminal {
+  min-height: 292px !important;
+  padding: 18px 20px !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(124, 255, 178, 0.055), transparent 36%),
+    #020402 !important;
+  color: rgba(124, 255, 178, 0.88) !important;
+  font-family: "JetBrains Mono", "Consolas", "Courier New", monospace !important;
+  font-size: 0.88rem !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.02em !important;
+  text-shadow:
+    0 0 5px rgba(124, 255, 178, 0.55),
+    0 0 18px rgba(124, 255, 178, 0.18) !important;
+  overflow: hidden !important;
+}
+
+.terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.38) 100%);
+  z-index: 1;
+}
+
+.terminal::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(124, 255, 178, 0.035),
+      rgba(124, 255, 178, 0.035) 1px,
+      transparent 1px,
+      transparent 3px
+    ) !important;
+  opacity: 0.50 !important;
+  z-index: 2 !important;
+}
+
+.terminal p {
+  position: relative !important;
+  z-index: 3 !important;
+  margin-bottom: 9px !important;
+}
+
+.prompt {
+  color: rgba(245, 167, 189, 0.92) !important;
+  text-shadow:
+    0 0 5px rgba(233, 117, 152, 0.50),
+    0 0 16px rgba(233, 117, 152, 0.18) !important;
+}
+
+.success {
+  color: rgba(124, 255, 178, 0.96) !important;
+  text-shadow:
+    0 0 5px rgba(124, 255, 178, 0.78),
+    0 0 18px rgba(124, 255, 178, 0.28) !important;
+}
+
+.typing-cursor {
+  position: relative !important;
+  z-index: 3 !important;
+  width: 9px !important;
+  height: 1rem !important;
+  background: var(--green-retro) !important;
+  box-shadow: 0 0 12px rgba(124, 255, 178, 0.85) !important;
+}
 </style>
 </head>
 
