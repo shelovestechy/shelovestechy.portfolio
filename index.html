@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- # Tästä alkaa dokumentin perustiedot -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Karita Jetsonen | IT Portfolio</title>
   <meta name="description" content="Karita Jetsonen - Service Desk Specialist building toward Identity, Microsoft 365 and practical IT systems." />
 
+  <!-- # Tästä alkaa fonttien lataus -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -13,13 +15,24 @@
   <style>
     /* =========================================================
        # Tästä alkaa CSS / ulkoasu
-       CSS määrittää miltä sivu näyttää: värit, asettelut,
-       fontit, kortit, animaatiot ja mobiilinäkymä.
+
+       Järjestys:
+       1. Värit ja perusasetukset
+       2. Yleiset komponentit
+       3. Navigaatio
+       4. Hero
+       5. About + CV
+       6. Work-kortit
+       7. What drives me + terminaali
+       8. Boot overlay
+       9. Contact modal
+       10. Footer
+       11. Responsiivisuus
        ========================================================= */
-    /* # Tästä alkaa väripaletti ja yleiset muuttujat */
+
+    /* # 1. Värit ja perusasetukset */
     :root {
       --bg: #070b09;
-      --surface: rgba(9, 18, 14, 0.78);
       --text: #f7eee8;
       --muted: #c9b9b0;
       --dim: #8d7f78;
@@ -29,9 +42,9 @@
       --green-retro: #7cffb2;
       --gold: #c69b54;
       --gold-border: rgba(198, 155, 84, 0.42);
+      --panel-bg: rgba(4, 12, 8, 0.72);
     }
 
-    /* # Tästä alkaa perusresetointi: poistetaan selaimen oletusvälit */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -42,9 +55,9 @@
       scroll-behavior: smooth;
     }
 
-    /* # Tästä alkaa koko sivun tausta, fontti ja yleinen tyyli */
     body {
       min-height: 100vh;
+      overflow-x: hidden;
       color: var(--text);
       font-family: "Inter", system-ui, sans-serif;
       line-height: 1.6;
@@ -56,7 +69,6 @@
         linear-gradient(180deg, #06100b 0%, #050706 62%, #030404 100%);
       background-size: 120% 120%, 120% 120%, 130% 130%, 140% 140%, auto;
       animation: ambientGradient 20s ease-in-out infinite alternate;
-      overflow-x: hidden;
     }
 
     @keyframes ambientGradient {
@@ -73,12 +85,178 @@
       color: inherit;
     }
 
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+    }
+
     .page-shell {
       width: min(1180px, calc(100% - 48px));
       margin: 0 auto;
     }
 
-    /* # Tästä alkaa yläpalkki / navigaatio */
+    /* # 2. Yleiset komponentit */
+    .section {
+      padding: 30px 0 0;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-width: 180px;
+      border-radius: 7px;
+      padding: 16px 22px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      color: #1b0d12;
+      background: linear-gradient(135deg, #ff78a4, #d95f85);
+      box-shadow: 0 18px 44px rgba(233, 117, 152, 0.28), 0 0 34px rgba(95, 143, 115, 0.12);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--rose);
+      color: var(--rose-soft);
+      background: rgba(7, 12, 10, 0.45);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--rose-pale);
+      box-shadow: 0 0 34px rgba(233, 117, 152, 0.16);
+    }
+
+    .glass-panel {
+      position: relative;
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at top left, rgba(233, 117, 152, 0.08), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(95, 143, 115, 0.16), transparent 34%),
+        var(--panel-bg);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(14px);
+    }
+
+    .section-kicker {
+      color: var(--rose-soft);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      font-size: 0.76rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 26px;
+    }
+
+    .card-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      color: var(--rose-soft);
+    }
+
+    .card-heading h2 {
+      font-size: clamp(2rem, 3.4vw, 2.8rem);
+      line-height: 1;
+    }
+
+    .icon-line {
+      font-size: 1.55rem;
+      color: var(--rose-soft);
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: min(520px, 100%);
+      margin: 28px 0 32px;
+      color: var(--rose);
+    }
+
+    .hero-divider::before,
+    .hero-divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(to right, transparent, var(--rose), transparent);
+    }
+
+    /* # Tästä alkaa korttien valoefekti
+       Huom: korttien liikuttelu on poistettu kokonaan.
+       JavaScript EI lisää transform-tyylejä. Se antaa vain hiiren sijainnin CSS:lle. */
+    .skill-item,
+    .project-card,
+    .work-panel,
+    .cv-card,
+    .drives-card,
+    .about-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-item > *,
+    .project-card > *,
+    .work-panel > *,
+    .cv-card > *,
+    .drives-card > *,
+    .about-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-item::before,
+    .project-card::before,
+    .work-panel::before,
+    .cv-card::before,
+    .drives-card::before,
+    .about-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(233, 117, 152, 0.18),
+        rgba(95, 143, 115, 0.10) 28%,
+        transparent 56%
+      );
+      transition: opacity 0.18s ease;
+    }
+
+    .skill-item:hover::before,
+    .project-card:hover::before,
+    .work-panel:hover::before,
+    .cv-card:hover::before,
+    .drives-card:hover::before,
+    .about-card:hover::before {
+      opacity: 1;
+    }
+
+    /* # 3. Navigaatio */
     .navbar {
       position: sticky;
       top: 0;
@@ -114,7 +292,6 @@
       height: 34px;
       display: grid;
       place-items: center;
-      color: var(--rose-soft);
       font-size: 1.35rem;
     }
 
@@ -122,7 +299,6 @@
       display: flex;
       align-items: center;
       gap: 30px;
-      color: var(--text);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -155,7 +331,7 @@
       width: 100%;
     }
 
-    /* # Tästä alkaa hero-alue eli sivun ensimmäinen iso esittelyosio */
+    /* # 4. Hero */
     .hero-wrap {
       position: relative;
       min-height: 760px;
@@ -176,9 +352,9 @@
     .rail-line {
       width: 1px;
       height: 270px;
-      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
       position: relative;
       margin-bottom: 18px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
     }
 
     .rail-line::before,
@@ -242,12 +418,6 @@
       margin-bottom: 18px;
     }
 
-    h1,
-    h2,
-    h3 {
-      font-family: "Playfair Display", serif;
-    }
-
     h1 {
       font-size: clamp(4.4rem, 8.6vw, 8.2rem);
       line-height: 0.84;
@@ -266,7 +436,6 @@
       letter-spacing: 0.32em;
       font-size: 0.98rem;
       font-weight: 800;
-      color: var(--text);
       margin-bottom: 24px;
     }
 
@@ -277,23 +446,6 @@
       margin-bottom: 28px;
     }
 
-    .hero-divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      width: min(520px, 100%);
-      margin: 28px 0 32px;
-      color: var(--rose);
-    }
-
-    .hero-divider::before,
-    .hero-divider::after {
-      content: "";
-      height: 1px;
-      flex: 1;
-      background: linear-gradient(to right, transparent, var(--rose), transparent);
-    }
-
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -301,146 +453,72 @@
       align-items: center;
     }
 
-    .button {
-      display: inline-flex;
+    .hero-visual {
+      position: relative;
+      min-height: 650px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      min-width: 180px;
-      border-radius: 7px;
-      padding: 16px 22px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
-    .button:hover {
-      transform: translateY(-3px);
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      border: 2px solid rgba(233, 117, 152, 0.42);
+      box-shadow:
+        0 0 80px rgba(233, 117, 152, 0.16),
+        inset 0 0 50px rgba(95, 143, 115, 0.12);
+      z-index: 0;
     }
 
-    .button-primary {
-      color: #1b0d12;
-      background: linear-gradient(135deg, #ff78a4, #d95f85);
-      box-shadow: 0 18px 44px rgba(233, 117, 152, 0.28), 0 0 34px rgba(95, 143, 115, 0.12);
-    }
-
-    .button-secondary {
-      border: 1px solid var(--rose);
-      color: var(--rose-soft);
-      background: rgba(7, 12, 10, 0.45);
-    }
-
-    .button-secondary:hover {
-      border-color: var(--rose-pale);
-      box-shadow: 0 0 34px rgba(233, 117, 152, 0.16);
-    }
-
-    /* # Tästä alkaa hero-kuvan alue */
-    .hero-visual {
-  position: relative;
-  min-height: 650px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  width: 580px;
-  height: 580px;
-  border-radius: 50%;
-  border: 2px solid rgba(233, 117, 152, 0.42);
-  box-shadow:
-    0 0 80px rgba(233, 117, 152, 0.16),
-    inset 0 0 50px rgba(95, 143, 115, 0.12);
-  z-index: 0;
-}
-
-.hero-visual::after {
-  content: "";
-  position: absolute;
-  width: 620px;
-  height: 620px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 40%, rgba(233, 117, 152, 0.18), transparent 24%),
-    radial-gradient(circle at 50% 50%, rgba(198, 155, 84, 0.10), transparent 30%),
-    radial-gradient(circle at 55% 45%, rgba(124, 255, 178, 0.08), transparent 34%);
-  filter: blur(12px);
-  z-index: 0;
-}
-
-.hero-image-circle {
-  position: relative;
-  z-index: 1;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at center, #16351f 0%, #0c140f 100%);
-  box-shadow:
-    0 35px 80px rgba(0, 0, 0, 0.72),
-    0 0 34px rgba(233, 117, 152, 0.12);
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transform: scale(1.08);
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.hero-image:hover {
-  transform: scale(1.12);
-}
-
-    /* # Tästä alkaa yleinen osioiden välistys */
-    .section {
-      padding: 30px 0 0;
-    }
-
-    /* # Tästä alkaa lasimainen paneelityyli, jota käytetään korteissa */
-    .glass-panel {
-      position: relative;
-      border: 1px solid var(--gold-border);
-      border-radius: 12px;
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
       background:
-        radial-gradient(circle at top left, rgba(233, 117, 152, 0.08), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(95, 143, 115, 0.16), transparent 34%),
-        rgba(4, 12, 8, 0.72);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(14px);
+        radial-gradient(circle at 50% 40%, rgba(233, 117, 152, 0.18), transparent 24%),
+        radial-gradient(circle at 50% 50%, rgba(198, 155, 84, 0.10), transparent 30%),
+        radial-gradient(circle at 55% 45%, rgba(124, 255, 178, 0.08), transparent 34%);
+      filter: blur(12px);
+      z-index: 0;
     }
 
-    .section-kicker {
-      color: var(--rose-soft);
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.34em;
-      font-size: 0.76rem;
-      font-weight: 800;
-      margin-bottom: 8px;
+    .hero-image-circle {
+      position: relative;
+      z-index: 2;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #16351f 0%, #0c140f 100%);
+      box-shadow:
+        0 35px 80px rgba(0, 0, 0, 0.72),
+        0 0 34px rgba(233, 117, 152, 0.12);
     }
 
-    .section-title {
-      text-align: center;
-      font-size: clamp(2.4rem, 4.5vw, 4rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      margin-bottom: 26px;
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: scale(1.08);
+      transition: transform 0.25s ease;
     }
 
-    /* # Tästä alkaa About Me + CV -osion asettelu */
+    .hero-image:hover {
+      transform: scale(1.12);
+    }
+
+    /* # 5. About + CV */
     .about-cv-grid {
       display: grid;
       grid-template-columns: 1.35fr 0.85fr;
@@ -449,7 +527,9 @@
     }
 
     .about-card,
-    .cv-card {
+    .cv-card,
+    .work-panel,
+    .drives-card {
       padding: 34px;
     }
 
@@ -460,31 +540,13 @@
       align-items: start;
     }
 
-    .card-heading {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-      color: var(--rose-soft);
-    }
-
-    .icon-line {
-      font-size: 1.55rem;
-      color: var(--rose-soft);
-    }
-
-    .card-heading h2 {
-      font-size: clamp(2rem, 3.4vw, 2.8rem);
-      line-height: 1;
-    }
-
     .about-card p,
-    .cv-card p {
+    .cv-card p,
+    .drives-intro {
       color: var(--muted);
       margin-bottom: 15px;
     }
 
-    /* # Tästä alkaa Focus areas -lista About Me -kortin oikealla puolella */
     .skill-column {
       border-left: 1px solid var(--gold-border);
       padding-left: 32px;
@@ -527,9 +589,8 @@
       cursor: not-allowed;
     }
 
-    /* # Tästä alkaa Work / Interests -korttien alue */
+    /* # 6. Work-kortit */
     .work-panel {
-      padding: 32px;
       margin-top: 18px;
     }
 
@@ -539,43 +600,21 @@
       gap: 22px;
     }
 
-    /* # Tästä alkaa yksittäisen projektikortin tyyli */
     .project-card {
-      position: relative;
       min-height: 300px;
       padding: 34px 28px;
       border: 1px solid rgba(233, 117, 152, 0.34);
       border-radius: 12px;
-      background: radial-gradient(circle at top left, rgba(233, 117, 152, 0.06), transparent 38%), rgba(5, 13, 9, 0.62);
       text-align: center;
-      transform-style: preserve-3d;
+      background:
+        radial-gradient(circle at top left, rgba(233, 117, 152, 0.06), transparent 38%),
+        rgba(5, 13, 9, 0.62);
       transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-      overflow: hidden;
-    }
-
-    /* # Tästä alkaa kortin hiirtä seuraava valoefekti */
-    .project-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      background: radial-gradient(440px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(233, 117, 152, 0.18), rgba(124, 255, 178, 0.09) 32%, transparent 62%);
-      transition: opacity 0.18s ease;
-      pointer-events: none;
     }
 
     .project-card:hover {
       border-color: rgba(245, 167, 189, 0.72);
       box-shadow: 0 22px 70px rgba(233, 117, 152, 0.18), 0 0 50px rgba(95, 143, 115, 0.18);
-    }
-
-    .project-card:hover::before {
-      opacity: 1;
-    }
-
-    .project-card > * {
-      position: relative;
-      z-index: 1;
     }
 
     .project-icon {
@@ -592,7 +631,6 @@
     }
 
     .project-card h3 {
-      color: var(--text);
       font-size: 1.55rem;
       margin-bottom: 12px;
     }
@@ -618,7 +656,7 @@
       text-decoration: none;
     }
 
-    /* # Tästä alkaa What drives me + terminaali -osion asettelu */
+    /* # 7. What drives me + old school -terminaali */
     .terminal-section {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -626,67 +664,54 @@
       margin-top: 18px;
     }
 
-    .drives-card {
-      padding: 34px;
-    }
-
-    .drives-intro {
-      color: var(--muted);
-      margin-bottom: 16px;
-      max-width: 62ch;
-    }
-
     .drives-card .card-heading {
       margin-bottom: 20px;
     }
 
-    .drives-card .card-heading h2 {
-      font-size: clamp(2rem, 3.4vw, 2.8rem);
+    .drives-intro {
+      max-width: 62ch;
     }
 
-    /* # Tästä alkaa terminaali-ikkunan ulkokuori */
     .command-card {
       position: relative;
-      border: 1px solid rgba(170, 170, 170, 0.22);
+      border: 1px solid rgba(124, 255, 178, 0.42);
       border-radius: 2px;
-      background:
-        repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.018), rgba(124, 255, 178, 0.018) 1px, transparent 1px, transparent 4px),
-        linear-gradient(180deg, rgba(10, 10, 10, 0.98), rgba(5, 5, 5, 0.99));
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 28px rgba(124, 255, 178, 0.08);
+      background: #050705;
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.70),
+        0 0 24px rgba(124, 255, 178, 0.10),
+        inset 0 0 28px rgba(124, 255, 178, 0.035);
       overflow: hidden;
     }
 
-    .command-card::before {
+    .command-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(245, 167, 189, 0.08), transparent);
-      transform: translateX(-100%);
-      animation: terminalShine 8s ease-in-out infinite;
+      z-index: 2;
       pointer-events: none;
-    }
-
-    @keyframes terminalShine {
-      0%, 70% {
-        transform: translateX(-100%);
-      }
-
-      100% {
-        transform: translateX(100%);
-      }
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(124, 255, 178, 0.045),
+        rgba(124, 255, 178, 0.045) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      opacity: 0.45;
+      mix-blend-mode: screen;
     }
 
     .command-topbar,
-    .cmd-topbar,
     .contact-terminal-topbar {
+      min-height: 30px;
+      padding: 5px 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 7px 10px;
-      background: linear-gradient(180deg, #2e2e2e, #1f1f1f);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, #161916, #090b09);
+      border-bottom: 1px solid rgba(124, 255, 178, 0.28);
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.85);
       font-family: "JetBrains Mono", "Consolas", monospace;
-      min-height: 34px;
     }
 
     .cmd-title-group {
@@ -696,16 +721,22 @@
       min-width: 0;
     }
 
+    .cmd-icon,
+    .cmd-title {
+      color: rgba(124, 255, 178, 0.86);
+      font-family: "JetBrains Mono", "Consolas", monospace;
+      text-shadow: 0 0 8px rgba(124, 255, 178, 0.35);
+    }
+
     .cmd-icon {
-      color: #dcdcdc;
       font-size: 0.72rem;
       letter-spacing: 0.02em;
     }
 
     .cmd-title {
-      color: #dcdcdc;
-      font-size: 0.76rem;
-      letter-spacing: 0.01em;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -721,68 +752,104 @@
     .cmd-controls span,
     .contact-close {
       width: 34px;
-      height: 22px;
+      height: 20px;
       display: grid;
       place-items: center;
-      color: #d2d2d2;
-      font-size: 0.8rem;
+      border: 0;
+      color: rgba(124, 255, 178, 0.72);
+      background: transparent;
+      font: inherit;
+      font-size: 0.72rem;
       line-height: 1;
       user-select: none;
     }
 
     .cmd-controls span:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(124, 255, 178, 0.10);
     }
 
     .cmd-controls span:last-child:hover,
     .contact-close:hover {
-      background: #c42b1c;
+      background: rgba(196, 43, 28, 0.88);
       color: white;
+      cursor: pointer;
     }
 
-    /* # Tästä alkaa terminaalin tekstialue */
     .terminal {
       position: relative;
       z-index: 1;
       min-height: 292px;
       padding: 18px 20px;
-      font-family: "JetBrains Mono", "Consolas", monospace;
-      color: #d6d6d6;
-      font-size: 0.92rem;
-      line-height: 1.78;
-      letter-spacing: 0.01em;
-      background: #0c0c0c;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(124, 255, 178, 0.055), transparent 36%),
+        #020402;
+      color: rgba(124, 255, 178, 0.88);
+      font-family: "JetBrains Mono", "Consolas", "Courier New", monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+      text-shadow:
+        0 0 5px rgba(124, 255, 178, 0.55),
+        0 0 18px rgba(124, 255, 178, 0.18);
+    }
+
+    .terminal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.38) 100%);
     }
 
     .terminal::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.024), rgba(124, 255, 178, 0.024) 1px, transparent 1px, transparent 4px);
+      z-index: 2;
       pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(124, 255, 178, 0.035),
+        rgba(124, 255, 178, 0.035) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      opacity: 0.50;
+    }
+
+    .terminal p,
+    .typing-cursor {
+      position: relative;
+      z-index: 3;
     }
 
     .terminal p {
-      margin-bottom: 12px;
+      margin-bottom: 9px;
     }
 
     .prompt {
-      color: var(--rose-soft);
-      text-shadow: 0 0 14px rgba(233, 117, 152, 0.22);
+      color: rgba(245, 167, 189, 0.92);
+      text-shadow:
+        0 0 5px rgba(233, 117, 152, 0.50),
+        0 0 16px rgba(233, 117, 152, 0.18);
     }
 
     .success {
-      color: var(--green-retro);
-      text-shadow: 0 0 4px rgba(124, 255, 178, 0.6), 0 0 14px rgba(95, 143, 115, 0.35);
+      color: rgba(124, 255, 178, 0.96);
+      text-shadow:
+        0 0 5px rgba(124, 255, 178, 0.78),
+        0 0 18px rgba(124, 255, 178, 0.28);
     }
 
     .typing-cursor {
       display: inline-block;
-      width: 8px;
+      width: 9px;
       height: 1rem;
       margin-left: 3px;
       background: var(--green-retro);
-      box-shadow: 0 0 10px rgba(124, 255, 178, 0.7);
+      box-shadow: 0 0 12px rgba(124, 255, 178, 0.85);
       animation: blink 0.9s infinite;
       vertical-align: middle;
     }
@@ -797,7 +864,7 @@
       }
     }
 
-    /* # Tästä alkaa sivun alun latausikkuna / boot overlay */
+    /* # 8. Boot overlay */
     .boot-overlay {
       position: fixed;
       inset: 0;
@@ -819,12 +886,15 @@
       width: min(650px, 100%);
       border: 1px solid rgba(124, 255, 178, 0.58);
       border-radius: 3px;
+      overflow: hidden;
       background:
         repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.035), rgba(124, 255, 178, 0.035) 1px, transparent 1px, transparent 5px),
         radial-gradient(circle at 50% 10%, rgba(124, 255, 178, 0.09), transparent 46%),
         linear-gradient(180deg, rgba(1, 12, 7, 0.98), rgba(0, 4, 2, 0.99));
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.86), 0 0 34px rgba(124, 255, 178, 0.22), inset 0 0 42px rgba(124, 255, 178, 0.06);
-      overflow: hidden;
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.86),
+        0 0 34px rgba(124, 255, 178, 0.22),
+        inset 0 0 42px rgba(124, 255, 178, 0.06);
       animation: bootFloatIn 0.28s steps(4, end) both, crtFlicker 1.7s infinite;
     }
 
@@ -868,11 +938,18 @@
       font-family: "JetBrains Mono", "Consolas", monospace;
     }
 
-    .boot-meta {
+    .boot-meta,
+    .boot-static-lines,
+    .boot-small {
       color: rgba(124, 255, 178, 0.72);
       font-size: 0.72rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
+    }
+
+    .boot-meta,
+    .boot-static-lines,
+    .boot-line {
       margin-bottom: 18px;
     }
 
@@ -880,8 +957,9 @@
       color: rgba(124, 255, 178, 0.62);
       font-size: 0.78rem;
       line-height: 1.7;
-      margin-bottom: 18px;
       text-shadow: 0 0 8px rgba(124, 255, 178, 0.30);
+      text-transform: none;
+      letter-spacing: normal;
     }
 
     .boot-kicker {
@@ -907,14 +985,17 @@
       color: var(--green-retro);
       text-transform: uppercase;
       letter-spacing: 0.07em;
-      text-shadow: 0 0 6px rgba(124, 255, 178, 0.75), 0 0 22px rgba(124, 255, 178, 0.26);
+      text-shadow:
+        0 0 6px rgba(124, 255, 178, 0.75),
+        0 0 22px rgba(124, 255, 178, 0.26);
     }
 
     .boot-line {
       min-height: 28px;
       color: var(--green-retro);
-      text-shadow: 0 0 4px rgba(124, 255, 178, 0.72), 0 0 16px rgba(95, 143, 115, 0.42);
-      margin-bottom: 18px;
+      text-shadow:
+        0 0 4px rgba(124, 255, 178, 0.72),
+        0 0 16px rgba(95, 143, 115, 0.42);
     }
 
     .boot-line::before {
@@ -948,8 +1029,6 @@
 
     .boot-small {
       color: rgba(201, 185, 176, 0.82);
-      font-size: 0.76rem;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
     }
 
@@ -968,21 +1047,10 @@
     }
 
     @keyframes crtFlicker {
-      0%, 100% {
-        opacity: 1;
-      }
-
-      92% {
-        opacity: 0.96;
-      }
-
-      94% {
-        opacity: 1;
-      }
-
-      97% {
-        opacity: 0.98;
-      }
+      0%, 100% { opacity: 1; }
+      92% { opacity: 0.96; }
+      94% { opacity: 1; }
+      97% { opacity: 0.98; }
     }
 
     @keyframes overlayExit {
@@ -999,7 +1067,7 @@
       }
     }
 
-    /* # Tästä alkaa Contact-ponnahdusikkuna */
+    /* # 9. Contact modal */
     .contact-modal {
       position: fixed;
       inset: 0;
@@ -1028,24 +1096,20 @@
       width: min(620px, 100%);
       border: 1px solid rgba(124, 255, 178, 0.45);
       border-radius: 3px;
+      overflow: hidden;
       background:
         repeating-linear-gradient(to bottom, rgba(124, 255, 178, 0.026), rgba(124, 255, 178, 0.026) 1px, transparent 1px, transparent 5px),
         linear-gradient(180deg, rgba(8, 12, 10, 0.98), rgba(2, 5, 3, 0.99));
-      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.72), 0 0 42px rgba(124, 255, 178, 0.16), 0 0 34px rgba(233, 117, 152, 0.10);
-      overflow: hidden;
+      box-shadow:
+        0 28px 90px rgba(0, 0, 0, 0.72),
+        0 0 42px rgba(124, 255, 178, 0.16),
+        0 0 34px rgba(233, 117, 152, 0.10);
       transform: translateY(12px) scale(0.98);
       transition: transform 220ms ease;
     }
 
     .contact-modal.is-open .contact-terminal {
       transform: translateY(0) scale(1);
-    }
-
-    .contact-close {
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-      font: inherit;
     }
 
     .contact-terminal-body {
@@ -1119,7 +1183,7 @@
       line-height: 1.7;
     }
 
-    /* # Tästä alkaa footer eli sivun alaosa */
+    /* # 10. Footer */
     .footer {
       padding: 30px 0 44px;
       color: var(--dim);
@@ -1139,16 +1203,9 @@
       text-decoration: none;
     }
 
-    /* # Tästä alkaa tabletin ja pienemmän näytön asettelu */
+    /* # 11. Responsiivisuus */
     @media (max-width: 980px) {
-      .hero-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .side-rail {
-        display: none;
-      }
-
+      .hero-wrap,
       .hero,
       .about-cv-grid,
       .about-layout,
@@ -1156,19 +1213,28 @@
         grid-template-columns: 1fr;
       }
 
+      .side-rail,
+      .nav-links {
+        display: none;
+      }
+
       .hero-visual {
         min-height: auto;
       }
 
-      .hero-visual::before {
-        width: 360px;
-        height: 360px;
-        right: 50%;
-        transform: translateX(50%);
+      .hero-image-circle {
+        width: 380px;
+        height: 380px;
       }
 
-      .hero-image {
-        max-height: 480px;
+      .hero-visual::before {
+        width: 430px;
+        height: 430px;
+      }
+
+      .hero-visual::after {
+        width: 470px;
+        height: 470px;
       }
 
       .cards-grid {
@@ -1181,573 +1247,222 @@
         border-top: 1px solid var(--gold-border);
         padding-top: 22px;
       }
-
-      .nav-links {
-        display: none;
-      }
     }
 
-    /* # Tästä alkaa hyvin pienen mobiilinäytön asettelu */
-    @media (max-width: 560px) {
+    @media (max-width: 760px) {
       .page-shell,
       .nav-inner {
         width: min(100% - 28px, 1180px);
       }
 
-      h1 {
-        font-size: clamp(3.6rem, 17vw, 5rem);
+      .nav-inner {
+        padding: 14px 0;
+      }
+
+      .brand {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+      }
+
+      .hero-wrap {
+        min-height: auto;
+        padding: 18px 0 14px;
+      }
+
+      .hero {
+        min-height: auto;
+        gap: 10px;
+        text-align: center;
+        border-bottom: 0;
       }
 
       .hero-copy {
-        padding-top: 30px;
+        padding: 28px 0 18px;
+      }
+
+      .eyebrow {
+        font-size: 0.68rem;
+        letter-spacing: 0.22em;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        font-size: clamp(3.25rem, 18vw, 4.8rem);
+        line-height: 0.88;
+        margin-bottom: 18px;
+      }
+
+      .role {
+        font-size: 0.76rem;
+        letter-spacing: 0.22em;
+        margin-bottom: 18px;
+      }
+
+      .hero-text {
+        max-width: 33ch;
+        margin: 0 auto 20px;
+        font-size: 0.96rem;
+        line-height: 1.65;
+      }
+
+      .hero-divider {
+        margin: 20px auto 22px;
+      }
+
+      .hero-actions {
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .button {
+        width: 100%;
+        max-width: 310px;
+        min-width: unset;
+        padding: 14px 18px;
+        font-size: 0.74rem;
+      }
+
+      .hero-visual {
+        min-height: 330px;
+        margin-top: 4px;
+      }
+
+      .hero-image-circle {
+        width: 285px;
+        height: 285px;
+      }
+
+      .hero-visual::before {
+        width: 320px;
+        height: 320px;
+      }
+
+      .hero-visual::after {
+        width: 350px;
+        height: 350px;
+      }
+
+      .section {
+        padding-top: 18px;
+      }
+
+      .about-cv-grid,
+      .terminal-section {
+        gap: 14px;
       }
 
       .about-card,
       .cv-card,
       .work-panel,
       .drives-card {
-        padding: 24px;
+        padding: 22px;
+      }
+
+      .card-heading {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .card-heading h2 {
+        font-size: 2rem;
+      }
+
+      .about-card p,
+      .cv-card p,
+      .drives-intro {
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .skill-column {
+        gap: 12px;
+      }
+
+      .skill-item {
+        grid-template-columns: 22px 1fr;
+        font-size: 0.92rem;
+      }
+
+      .section-title {
+        font-size: 2.3rem;
+      }
+
+      .cards-grid {
+        gap: 14px;
+      }
+
+      .project-card {
+        min-height: auto;
+        padding: 26px 22px;
+      }
+
+      .project-icon {
+        width: 62px;
+        height: 62px;
+        font-size: 1.55rem;
+        margin-bottom: 16px;
+      }
+
+      .project-card h3 {
+        font-size: 1.35rem;
+      }
+
+      .terminal {
+        min-height: 250px;
+        padding: 14px;
+        font-size: 0.78rem;
+        line-height: 1.65;
+        overflow-x: auto;
+      }
+
+      .cmd-title {
+        max-width: 190px;
+      }
+
+      .boot-content {
+        padding: 22px;
+      }
+
+      .boot-window,
+      .contact-terminal {
+        width: min(94vw, 650px);
+      }
+
+      .boot-static-lines {
+        display: none;
+      }
+
+      .boot-content h2,
+      .contact-terminal h2 {
+        font-size: 1.3rem;
+      }
+
+      .boot-line,
+      .contact-lines {
+        font-size: 0.78rem;
+      }
+
+      .contact-terminal-body {
+        padding: 22px;
+      }
+
+      .footer {
+        padding: 24px 18px 38px;
+        font-size: 0.82rem;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
       }
     }
-  
-/* # Tästä alkaa viimeinen hero-kuvan varmistuskorjaus
-   Tämä on lopussa, jotta se voittaa aiemmat hero-kuvan tyylit.
-*/
-/* FINAL HERO IMAGE FIX — keep this at the end so older styles cannot override it */
-.hero-visual {
-  position: relative !important;
-  min-height: 650px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.hero-visual::before {
-  content: "" !important;
-  position: absolute !important;
-  width: 580px !important;
-  height: 580px !important;
-  border-radius: 50% !important;
-  border: 2px solid rgba(233, 117, 152, 0.42) !important;
-  box-shadow: 0 0 80px rgba(233, 117, 152, 0.16), inset 0 0 50px rgba(95, 143, 115, 0.12) !important;
-  z-index: 0 !important;
-}
-
-.hero-visual::after {
-  content: "" !important;
-  position: absolute !important;
-  width: 620px !important;
-  height: 620px !important;
-  border-radius: 50% !important;
-  background: radial-gradient(circle at 50% 40%, rgba(233, 117, 152, 0.18), transparent 24%), radial-gradient(circle at 50% 50%, rgba(198, 155, 84, 0.10), transparent 30%), radial-gradient(circle at 55% 45%, rgba(124, 255, 178, 0.08), transparent 34%) !important;
-  filter: blur(12px) !important;
-  z-index: 0 !important;
-}
-
-.hero-image-circle {
-  position: relative !important;
-  z-index: 2 !important;
-  width: 500px !important;
-  height: 500px !important;
-  border-radius: 50% !important;
-  overflow: hidden !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: radial-gradient(circle at center, #16351f 0%, #0c140f 100%) !important;
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.72), 0 0 34px rgba(233, 117, 152, 0.12) !important;
-}
-
-.hero-image-circle .hero-image {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  display: block !important;
-  border-radius: 0 !important;
-  transform: scale(1.08) !important;
-}
-
-.hero-image-circle .hero-image:hover {
-  transform: scale(1.12) !important;
-}
-
-@media (max-width: 980px) {
-  .hero-image-circle {
-    width: 380px !important;
-    height: 380px !important;
-  }
-
-  .hero-visual::before {
-    width: 430px !important;
-    height: 430px !important;
-  }
-
-  .hero-visual::after {
-    width: 470px !important;
-    height: 470px !important;
-  }
-}
-
-@media (max-width: 560px) {
-  .hero-image-circle {
-    width: 300px !important;
-    height: 300px !important;
-  }
-
-  .hero-visual::before {
-    width: 340px !important;
-    height: 340px !important;
-  }
-
-  .hero-visual::after {
-    width: 380px !important;
-    height: 380px !important;
-  }
-}
-
-/* # Tästä alkaa mobiilin viimeistelypaketti
-   Tämä tekee puhelinnäkymästä tiiviimmän ja helpommin luettavan.
-*/
-/* MOBILE POLISH — makes the portfolio feel designed for phone, not just squeezed smaller */
-@media (max-width: 760px) {
-  .navbar {
-    position: sticky;
-  }
-
-  .nav-inner {
-    padding: 14px 0;
-  }
-
-  .brand {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-  }
-
-  .nav-links {
-    gap: 10px;
-    font-size: 0.68rem;
-  }
-
-  .hero-wrap {
-    min-height: auto;
-    padding: 18px 0 14px;
-  }
-
-  .hero {
-    min-height: auto;
-    gap: 10px;
-    text-align: center;
-    border-bottom: 0;
-  }
-
-  .hero-copy {
-    padding: 28px 0 18px;
-  }
-
-  .eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    margin-bottom: 14px;
-  }
-
-  h1 {
-    font-size: clamp(3.25rem, 18vw, 4.8rem);
-    line-height: 0.88;
-    margin-bottom: 18px;
-  }
-
-  .role {
-    font-size: 0.76rem;
-    letter-spacing: 0.22em;
-    margin-bottom: 18px;
-  }
-
-  .hero-text {
-    max-width: 33ch;
-    margin: 0 auto 20px;
-    font-size: 0.96rem;
-    line-height: 1.65;
-  }
-
-  .hero-divider {
-    margin: 20px auto 22px;
-  }
-
-  .hero-actions {
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .button {
-    width: 100%;
-    max-width: 310px;
-    min-width: unset;
-    padding: 14px 18px;
-    font-size: 0.74rem;
-  }
-
-  .hero-visual {
-    min-height: 330px !important;
-    margin-top: 4px;
-  }
-
-  .hero-image-circle {
-    width: 285px !important;
-    height: 285px !important;
-  }
-
-  .hero-visual::before {
-    width: 320px !important;
-    height: 320px !important;
-  }
-
-  .hero-visual::after {
-    width: 350px !important;
-    height: 350px !important;
-  }
-
-  .section {
-    padding-top: 18px;
-  }
-
-  .about-cv-grid {
-    gap: 14px;
-  }
-
-  .about-card,
-  .cv-card,
-  .work-panel,
-  .drives-card {
-    padding: 22px;
-  }
-
-  .card-heading {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .card-heading h2 {
-    font-size: 2rem;
-  }
-
-  .about-card p,
-  .cv-card p,
-  .drives-intro {
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .skill-column {
-    gap: 12px;
-  }
-
-  .skill-item {
-    grid-template-columns: 22px 1fr;
-    font-size: 0.92rem;
-  }
-
-  .section-title {
-    font-size: 2.3rem;
-    text-align: center;
-  }
-
-  .section-subtitle {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cards-grid {
-    gap: 14px;
-  }
-
-  .project-card {
-    min-height: auto;
-    padding: 26px 22px;
-  }
-
-  .project-icon {
-    width: 62px;
-    height: 62px;
-    font-size: 1.55rem;
-    margin-bottom: 16px;
-  }
-
-  .project-card h3 {
-    font-size: 1.35rem;
-  }
-
-  .terminal-section {
-    gap: 14px;
-  }
-
-  .terminal {
-    min-height: 250px;
-    padding: 14px;
-    font-size: 0.78rem;
-    line-height: 1.65;
-    overflow-x: auto;
-  }
-
-  .cmd-title {
-    max-width: 190px;
-  }
-
-  .boot-content {
-    padding: 22px;
-  }
-
-  .boot-window {
-    width: min(94vw, 650px);
-  }
-
-  .boot-static-lines {
-    display: none;
-  }
-
-  .boot-content h2 {
-    font-size: 1.35rem;
-  }
-
-  .boot-line {
-    font-size: 0.78rem;
-  }
-
-  .contact-terminal {
-    width: min(94vw, 620px);
-  }
-
-  .contact-terminal-body {
-    padding: 22px;
-  }
-
-  .contact-terminal h2 {
-    font-size: 1.3rem;
-  }
-
-  .contact-lines {
-    font-size: 0.84rem;
-  }
-
-  .footer {
-    padding: 24px 18px 38px;
-    font-size: 0.82rem;
-  }
-
-  .footer-links {
-    flex-wrap: wrap;
-  }
-}
-
-/* # Tästä alkaa lopullinen korttien valoefekti
-   Kortit eivät liiku. JavaScript antaa vain hiiren sijainnin,
-   ja CSS piirtää valon sen kohtaan.
-*/
-/* FINAL GLOW-ONLY CARD FIX — no tilt script, no movement script, only cursor-following light */
-.skill-item,
-.project-card,
-.work-panel,
-.cv-card,
-.drives-card,
-.about-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-item > *,
-.project-card > *,
-.work-panel > *,
-.cv-card > *,
-.drives-card > *,
-.about-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.skill-item::before,
-.project-card::before,
-.work-panel::before,
-.cv-card::before,
-.drives-card::before,
-.about-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(233, 117, 152, 0.18),
-    rgba(95, 143, 115, 0.10) 28%,
-    transparent 56%
-  );
-  transition: opacity 0.18s ease;
-}
-
-.skill-item:hover::before,
-.project-card:hover::before,
-.work-panel:hover::before,
-.cv-card:hover::before,
-.drives-card:hover::before,
-.about-card:hover::before {
-  opacity: 1;
-}
-
-/* # Tästä alkaa lopullinen old school CMD / retro terminal -korjaus
-   Tämä tekee terminaalista vähemmän smoothin ja enemmän musta-vihreän,
-   vanhan komentorivin näköisen. */
-.command-card {
-  border: 1px solid rgba(124, 255, 178, 0.42) !important;
-  border-radius: 2px !important;
-  background: #050705 !important;
-  box-shadow:
-    0 18px 48px rgba(0, 0, 0, 0.70),
-    0 0 24px rgba(124, 255, 178, 0.10),
-    inset 0 0 28px rgba(124, 255, 178, 0.035) !important;
-}
-
-.command-card::before {
-  display: none !important;
-}
-
-.command-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(124, 255, 178, 0.045),
-      rgba(124, 255, 178, 0.045) 1px,
-      transparent 1px,
-      transparent 4px
-    );
-  opacity: 0.45;
-  mix-blend-mode: screen;
-}
-
-.command-topbar,
-.cmd-topbar {
-  min-height: 30px !important;
-  padding: 5px 8px !important;
-  background: linear-gradient(180deg, #161916, #090b09) !important;
-  border-bottom: 1px solid rgba(124, 255, 178, 0.28) !important;
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.85) !important;
-}
-
-.cmd-icon,
-.cmd-title {
-  color: rgba(124, 255, 178, 0.86) !important;
-  font-family: "JetBrains Mono", "Consolas", monospace !important;
-  text-shadow: 0 0 8px rgba(124, 255, 178, 0.35) !important;
-}
-
-.cmd-title {
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  font-size: 0.68rem !important;
-}
-
-.cmd-controls span {
-  color: rgba(124, 255, 178, 0.72) !important;
-  height: 20px !important;
-  font-size: 0.72rem !important;
-}
-
-.cmd-controls span:hover {
-  background: rgba(124, 255, 178, 0.10) !important;
-}
-
-.cmd-controls span:last-child:hover {
-  background: rgba(196, 43, 28, 0.88) !important;
-  color: white !important;
-}
-
-.terminal {
-  min-height: 292px !important;
-  padding: 18px 20px !important;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(124, 255, 178, 0.055), transparent 36%),
-    #020402 !important;
-  color: rgba(124, 255, 178, 0.88) !important;
-  font-family: "JetBrains Mono", "Consolas", "Courier New", monospace !important;
-  font-size: 0.88rem !important;
-  line-height: 1.7 !important;
-  letter-spacing: 0.02em !important;
-  text-shadow:
-    0 0 5px rgba(124, 255, 178, 0.55),
-    0 0 18px rgba(124, 255, 178, 0.18) !important;
-  overflow: hidden !important;
-}
-
-.terminal::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.38) 100%);
-  z-index: 1;
-}
-
-.terminal::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(124, 255, 178, 0.035),
-      rgba(124, 255, 178, 0.035) 1px,
-      transparent 1px,
-      transparent 3px
-    ) !important;
-  opacity: 0.50 !important;
-  z-index: 2 !important;
-}
-
-.terminal p {
-  position: relative !important;
-  z-index: 3 !important;
-  margin-bottom: 9px !important;
-}
-
-.prompt {
-  color: rgba(245, 167, 189, 0.92) !important;
-  text-shadow:
-    0 0 5px rgba(233, 117, 152, 0.50),
-    0 0 16px rgba(233, 117, 152, 0.18) !important;
-}
-
-.success {
-  color: rgba(124, 255, 178, 0.96) !important;
-  text-shadow:
-    0 0 5px rgba(124, 255, 178, 0.78),
-    0 0 18px rgba(124, 255, 178, 0.28) !important;
-}
-
-.typing-cursor {
-  position: relative !important;
-  z-index: 3 !important;
-  width: 9px !important;
-  height: 1rem !important;
-  background: var(--green-retro) !important;
-  box-shadow: 0 0 12px rgba(124, 255, 178, 0.85) !important;
-}
-</style>
+  </style>
 </head>
 
 <body>
   <!-- =========================================================
        # Tästä alkaa HTML / sivun sisältö
-       HTML määrittää mitä sivulla on: tekstit, kortit,
-       kuvat, linkit, footer ja contact-ikkuna.
        ========================================================= -->
+
   <!-- # Tästä alkaa alun latausikkuna / boot overlay -->
   <div class="boot-overlay" id="bootOverlay" aria-live="polite">
     <div class="boot-window">
@@ -1771,7 +1486,11 @@
   <!-- # Tästä alkaa yläpalkki / navigaatio -->
   <header class="navbar">
     <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Go to homepage"><span class="brand-mark">♕</span><span>KJ</span></a>
+      <a class="brand" href="#top" aria-label="Go to homepage">
+        <span class="brand-mark">♕</span>
+        <span>KJ</span>
+      </a>
+
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#top" class="active">Home</a>
         <a href="#about">About me</a>
@@ -1785,7 +1504,8 @@
 
   <!-- # Tästä alkaa sivun pääsisältö -->
   <main id="top" class="page-shell">
-    <!-- # Tästä alkaa hero-osio: nimi, rooli, esittelyteksti ja kuva -->
+
+    <!-- # Tästä alkaa hero-osio -->
     <section class="hero-wrap">
       <aside class="side-rail" aria-hidden="true">
         <div class="rail-line"></div>
@@ -1799,7 +1519,9 @@
           <h1>Karita<br><span class="rose-text">Jetsonen</span></h1>
           <div class="role">Service Desk Specialist</div>
           <p class="hero-text">Service Desk Specialist building toward an IAM Analyst career through real-world problem solving, identity knowledge and security-minded thinking.</p>
+
           <div class="hero-divider">✦</div>
+
           <div class="hero-actions">
             <a href="#about" class="button button-primary">About me →</a>
             <a href="#work" class="button button-secondary">Explore my work</a>
@@ -1807,14 +1529,14 @@
         </div>
 
         <div class="hero-visual" aria-label="Portfolio profile image">
-  <div class="hero-image-circle">
-    <img class="hero-image" src="assets/profile.png" alt="Karita Jetsonen profile photo" />
-  </div>
-</div>
+          <div class="hero-image-circle">
+            <img class="hero-image" src="assets/profile.png" alt="Karita Jetsonen profile photo" />
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- # Tästä alkaa About Me + CV -osio -->
+    <!-- # Tästä alkaa About Me + CV -->
     <section id="about" class="section">
       <div class="about-cv-grid">
         <article class="glass-panel about-card">
@@ -1854,7 +1576,7 @@
       </div>
     </section>
 
-    <!-- # Tästä alkaa Work / Interests -osio -->
+    <!-- # Tästä alkaa Work / Interests -->
     <section id="work" class="section">
       <div class="glass-panel work-panel">
         <div class="section-kicker">What I focus on</div>
@@ -1867,7 +1589,7 @@
             <h3>Identity Lab</h3>
             <p>Exploring IAM fundamentals, access models, joiner-mover-leaver thinking, security assumptions and real access risks.</p>
             <div class="card-rule"></div>
-            <a class="card-link" href="https://github.com/shelovestechy/Ideantity-lab" target="_blank" rel="noreferrer">View lab →</a>
+            <a class="card-link" href="https://github.com/shelovestechy/Identity-lab" target="_blank" rel="noreferrer">View lab →</a>
           </article>
 
           <article class="project-card">
@@ -1889,18 +1611,21 @@
       </div>
     </section>
 
-    <!-- # Tästä alkaa What drives me + terminaali -osio -->
+    <!-- # Tästä alkaa What drives me + terminaali -->
     <section class="terminal-section">
       <article class="glass-panel drives-card">
         <div class="card-heading"><span class="icon-line">✦</span><h2>What drives me</h2></div>
         <p class="drives-intro">I have loved computers since I was a kid. At six years old, I was already making my parents proud by freezing Windows 98 and saving my very valuable Paint masterpieces on floppy disks.</p>
-        <p class="drives-intro">Outside work, I enjoy being in nature, fishing, reading books, listening to music, gaming and spending time around dogs. I like things that keep me curious, grounded and a little bit stubborn in the best way.</p>
+        <p class="drives-intro">Outside work, I enjoy being in nature, fishing, reading books, listening to music, gaming and spending time with family. I like things that keep me curious, grounded and a little bit stubborn in the best way.</p>
         <p class="drives-intro">My goal is to build a career that challenges me, teaches me continuously and lets me help other people through better systems, clearer support and practical problem solving.</p>
       </article>
 
       <aside class="command-card" aria-label="Portfolio terminal preview">
-        <div class="command-topbar cmd-topbar">
-          <div class="cmd-title-group"><span class="cmd-icon">C:\&gt;</span><span class="cmd-title">Command Prompt</span></div>
+        <div class="command-topbar">
+          <div class="cmd-title-group">
+            <span class="cmd-icon">C:\&gt;</span>
+            <span class="cmd-title">Command Prompt</span>
+          </div>
           <div class="cmd-controls" aria-hidden="true"><span>─</span><span>□</span><span>✕</span></div>
         </div>
         <div class="terminal" id="terminal" aria-live="polite"></div>
@@ -1908,7 +1633,7 @@
     </section>
   </main>
 
-  <!-- # Tästä alkaa footer / sivun alaosa -->
+  <!-- # Tästä alkaa footer -->
   <footer id="contact" class="footer">
     <p>© <span id="year"></span> Karita Jetsonen. Built with HTML, CSS and stubborn queen energy. ♥</p>
     <div class="footer-links">
@@ -1922,7 +1647,10 @@
   <div class="contact-modal" id="contactModal" aria-hidden="true">
     <div class="contact-terminal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
       <div class="contact-terminal-topbar">
-        <div class="cmd-title-group"><span class="cmd-icon">C:\&gt;</span><span class="cmd-title">contact_port.exe</span></div>
+        <div class="cmd-title-group">
+          <span class="cmd-icon">C:\&gt;</span>
+          <span class="cmd-title">contact_port.exe</span>
+        </div>
         <button class="contact-close" id="contactClose" type="button" aria-label="Close contact window">✕</button>
       </div>
 
@@ -1944,171 +1672,163 @@
 
   <!-- =========================================================
        # Tästä alkaa JavaScript / toiminnallisuus
-       JavaScript tekee sivusta elävän: vuosi footerissa,
-       contact-ikkuna, boot-animaatio, terminaalin kirjoitus
-       ja korttien valoefekti.
        ========================================================= -->
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // # Tästä alkaa koodi, joka suoritetaan vasta kun HTML on latautunut
-    // # Tästä tarkistetaan onko käyttäjä mobiilinäytöllä
-    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+    document.addEventListener("DOMContentLoaded", () => {
+      // # 1. Haetaan tarvittavat elementit
+      const isMobile = window.matchMedia("(max-width: 760px)").matches;
+      const year = document.getElementById("year");
+      const bootOverlay = document.getElementById("bootOverlay");
+      const bootLine = document.getElementById("bootLine");
+      const terminal = document.getElementById("terminal");
+      const contactModal = document.getElementById("contactModal");
+      const contactClose = document.getElementById("contactClose");
+      const contactTriggers = document.querySelectorAll("[data-contact-open]");
+      const glowCards = document.querySelectorAll(".skill-item, .project-card, .work-panel, .cv-card, .drives-card, .about-card");
 
-    // # Tästä haetaan HTML-elementit, joita JavaScript tarvitsee
-    const year = document.getElementById("year");
-    const bootOverlay = document.getElementById("bootOverlay");
-    const bootLine = document.getElementById("bootLine");
-    const terminal = document.getElementById("terminal");
-    const contactModal = document.getElementById("contactModal");
-    const contactClose = document.getElementById("contactClose");
-    const contactTriggers = document.querySelectorAll("[data-contact-open]");
+      // # 2. Päivitetään footerin vuosiluku automaattisesti
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
 
-    // # Tästä päivitetään footerin vuosiluku automaattisesti
-    if (year) {
-      year.textContent = new Date().getFullYear();
-    }
+      // # 3. Contact-ikkunan avaaminen ja sulkeminen
+      function openContactModal(event) {
+        if (event) event.preventDefault();
+        if (!contactModal || !contactClose) return;
 
-    // # Tästä alkaa Contact-ikkunan avaaminen
-    function openContactModal(event) {
-      if (event) event.preventDefault();
-      if (!contactModal || !contactClose) return;
+        contactModal.classList.add("is-open");
+        contactModal.setAttribute("aria-hidden", "false");
+        contactClose.focus();
+      }
 
-      contactModal.classList.add("is-open");
-      contactModal.setAttribute("aria-hidden", "false");
-      contactClose.focus();
-    }
+      function closeContactModal() {
+        if (!contactModal) return;
 
-    // # Tästä alkaa Contact-ikkunan sulkeminen
-    function closeContactModal() {
-      if (!contactModal) return;
+        contactModal.classList.remove("is-open");
+        contactModal.setAttribute("aria-hidden", "true");
+      }
 
-      contactModal.classList.remove("is-open");
-      contactModal.setAttribute("aria-hidden", "true");
-    }
+      contactTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", openContactModal);
+      });
 
-    contactTriggers.forEach((trigger) => {
-      trigger.addEventListener("click", openContactModal);
-    });
+      if (contactClose) {
+        contactClose.addEventListener("click", closeContactModal);
+      }
 
-    if (contactClose) {
-      contactClose.addEventListener("click", closeContactModal);
-    }
+      if (contactModal) {
+        contactModal.addEventListener("click", (event) => {
+          if (event.target === contactModal) {
+            closeContactModal();
+          }
+        });
+      }
 
-    if (contactModal) {
-      contactModal.addEventListener("click", (event) => {
-        if (event.target === contactModal) {
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && contactModal && contactModal.classList.contains("is-open")) {
           closeContactModal();
         }
       });
-    }
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && contactModal && contactModal.classList.contains("is-open")) {
-        closeContactModal();
+      // # 4. Boot overlayn vaihtuvat tekstit
+      const bootMessages = [
+        "Initializing portfolio system...",
+        "Scanning user profile...",
+        "User found: Karita Jetsonen",
+        "Loading future path: IAM Analyst / Identity & Security...",
+        "Preparing identity-focused interface...",
+        "System ready. Welcome."
+      ];
+
+      if (bootLine) {
+        bootMessages.forEach((message, index) => {
+          setTimeout(() => {
+            bootLine.textContent = message;
+          }, index * (isMobile ? 420 : 780));
+        });
       }
-    });
 
-    // # Tästä alkaa boot/latausikkunan vaihtuvat viestit
-    const bootMessages = [
-      "Initializing portfolio system...",
-      "Scanning user profile...",
-      "User found: Karita Jetsonen",
-      "Loading future path: IAM Analyst / Identity & Security...",
-      "Preparing identity-focused interface...",
-      "System ready. Welcome."
-    ];
-
-    if (bootLine) {
-      bootMessages.forEach((message, index) => {
+      if (bootOverlay) {
         setTimeout(() => {
-          bootLine.textContent = message;
-        }, index * (isMobile ? 420 : 780));
-      });
-    }
-
-    if (bootOverlay) {
-      setTimeout(() => {
-        bootOverlay.remove();
-      }, isMobile ? 3200 : 5800);
-    }
-
-    // # Tästä alkaa terminaaliin kirjoitettavat rivit
-    const terminalLines = [
-      { text: "Microsoft Windows [Version 10.0.22631]", className: "prompt" },
-      { text: "(c) Karita Jetsonen. All rights reserved.", className: "prompt" },
-      { text: "C:\Users\Karita> boot portfolio.exe", className: "prompt" },
-      { text: "[OK] Portfolio system initialized", className: "success" },
-      { text: "C:\Users\Karita> load profile --user karita_jetsonen", className: "prompt" },
-      { text: "[OK] User found: Karita Jetsonen", className: "success" },
-      { text: "C:\Users\Karita> show focus", className: "prompt" },
-      { text: "Identity | Microsoft 365 | PowerShell | Support Thinking", className: "success" },
-      { text: "C:\Users\Karita> career-path", className: "prompt" },
-      { text: "IAM Analyst / Identity & Security", className: "success" },
-      { text: "C:\Users\Karita> status", className: "prompt" },
-      { text: "Ready to level up.", className: "success" }
-    ];
-
-    let lineIndex = 0;
-    let charIndex = 0;
-    let currentParagraph = null;
-
-    // # Tästä alkaa terminaalin typing-animaatio
-    function typeTerminal() {
-      if (!terminal) return;
-
-      if (lineIndex >= terminalLines.length) {
-        const cursor = document.createElement("span");
-        cursor.className = "typing-cursor";
-        terminal.appendChild(cursor);
-        return;
+          bootOverlay.remove();
+        }, isMobile ? 3200 : 5800);
       }
 
-      if (!currentParagraph) {
-        currentParagraph = document.createElement("p");
-        currentParagraph.className = terminalLines[lineIndex].className;
-        terminal.appendChild(currentParagraph);
+      // # 5. Terminaaliin kirjoitettavat rivit
+      // Huom: JavaScriptissä Windows-polun kenoviivat pitää kirjoittaa tuplana: \\.
+      const terminalLines = [
+        { text: "Microsoft Windows [Version 10.0.22631]", className: "prompt" },
+        { text: "(c) Karita Jetsonen. All rights reserved.", className: "prompt" },
+        { text: "C:\\Users\\Karita> boot portfolio.exe", className: "prompt" },
+        { text: "[OK] Portfolio system initialized", className: "success" },
+        { text: "C:\\Users\\Karita> load profile --user karita_jetsonen", className: "prompt" },
+        { text: "[OK] User found: Karita Jetsonen", className: "success" },
+        { text: "C:\\Users\\Karita> show focus", className: "prompt" },
+        { text: "Identity | Microsoft 365 | PowerShell | Support Thinking", className: "success" },
+        { text: "C:\\Users\\Karita> career-path", className: "prompt" },
+        { text: "IAM Analyst / Identity & Security", className: "success" },
+        { text: "C:\\Users\\Karita> status", className: "prompt" },
+        { text: "Ready to level up.", className: "success" }
+      ];
+
+      let lineIndex = 0;
+      let charIndex = 0;
+      let currentParagraph = null;
+
+      // # 6. Terminaalin typing-animaatio
+      function typeTerminal() {
+        if (!terminal) return;
+
+        if (lineIndex >= terminalLines.length) {
+          const cursor = document.createElement("span");
+          cursor.className = "typing-cursor";
+          terminal.appendChild(cursor);
+          return;
+        }
+
+        if (!currentParagraph) {
+          currentParagraph = document.createElement("p");
+          currentParagraph.className = terminalLines[lineIndex].className;
+          terminal.appendChild(currentParagraph);
+        }
+
+        const currentLine = terminalLines[lineIndex].text;
+        currentParagraph.textContent += currentLine.charAt(charIndex);
+        charIndex += 1;
+
+        if (charIndex < currentLine.length) {
+          setTimeout(typeTerminal, 26);
+        } else {
+          lineIndex += 1;
+          charIndex = 0;
+          currentParagraph = null;
+          setTimeout(typeTerminal, 320);
+        }
       }
 
-      const currentLine = terminalLines[lineIndex].text;
-      currentParagraph.textContent += currentLine.charAt(charIndex);
-      charIndex += 1;
-
-      if (charIndex < currentLine.length) {
-        setTimeout(typeTerminal, 26);
-      } else {
-        lineIndex += 1;
-        charIndex = 0;
-        currentParagraph = null;
-        setTimeout(typeTerminal, 320);
+      if (terminal) {
+        terminal.innerHTML = "";
+        typeTerminal();
       }
-    }
 
-    if (terminal) {
-      terminal.innerHTML = "";
-      typeTerminal();
-    }
+      // # 7. Korttien valoefekti
+      // Tämä ei liikuta kortteja. Se vain päivittää CSS-muuttujat --mouse-x ja --mouse-y.
+      glowCards.forEach((card) => {
+        card.addEventListener("mousemove", (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
 
-    // # Tästä alkaa korttien hiirtä seuraava valoefekti
-    const glowCards = document.querySelectorAll(
-      ".skill-item, .project-card, .work-panel, .cv-card, .drives-card, .about-card"
-    );
+          card.style.setProperty("--mouse-x", `${x}px`);
+          card.style.setProperty("--mouse-y", `${y}px`);
+        });
 
-    glowCards.forEach((card) => {
-      card.addEventListener("mousemove", (event) => {
-        const rect = card.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.removeProperty("--mouse-x");
-        card.style.removeProperty("--mouse-y");
+        card.addEventListener("mouseleave", () => {
+          card.style.removeProperty("--mouse-x");
+          card.style.removeProperty("--mouse-y");
+        });
       });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
